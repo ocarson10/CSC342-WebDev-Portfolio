@@ -1,3 +1,7 @@
+*{
+    font-family: 'Inter Tight', sans-serif;
+
+}
 body{
     display: grid;
     grid-template-areas:
@@ -19,7 +23,6 @@ header{
     display: inline;
     padding: 15px;
     margin-left: 130px;
-    font-family: 'Inter Tight', sans-serif;
 }
 .navbar > a{
     padding: 20px;
@@ -35,21 +38,10 @@ header{
 }
 h1{
    
-    font-family: 'Inter Tight', sans-serif;
     font-size: 60px;
     
 }
-h2{
-   
-    font-family: 'Inter Tight', sans-serif;
-}
 
-h3{
-    font-family: 'Newsreader', serif;
-}
-p{
-    font-family: 'Inter Tight', sans-serif;
-}
 .article-content{
     grid-area: main-article;
     margin-left: 20%;
@@ -57,7 +49,6 @@ p{
 }
 footer{
     grid-area: footer;
-    font-family: 'Newsreader', serif;
     color: black;
     margin-top: auto;
    height: 40px;

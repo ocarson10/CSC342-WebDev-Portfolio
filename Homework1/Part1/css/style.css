@@ -1,3 +1,7 @@
+*{
+    font-family: 'Inter Tight', sans-serif;
+
+}
 body{
     display: grid;
     grid-template-areas:
@@ -7,6 +11,7 @@ body{
     grid-template-columns: 3fr 1fr 1fr;
     grid-template-rows: 80px auto 70px;
     margin:0;
+    width: 100vw;
 }
 header{
     grid-area: topbar;
@@ -20,13 +25,15 @@ header{
     display: inline;
     padding: 15px;
     margin-left: 130px;
-    font-family: 'Inter Tight', sans-serif;
 }
 .navbar > a{
     padding: 20px;
 }
-.navbar > a:hover {
+#menu-item:hover {
     color: #176B87;
+}
+#menu-item{
+    margin-left: 20px;
 }
 .search{
     padding: 10px;
@@ -34,14 +41,7 @@ header{
     height: 30px;
     margin-left: 500px;
 }
-h1{
-   
-    font-family: 'Inter Tight', sans-serif;
-}
-h2{
-   
-    font-family: 'Inter Tight', sans-serif;
-}
+
 .trending{
     font-size: 64px;
     padding-left: 10%;
@@ -52,12 +52,7 @@ h2{
     font-size: 40px;
     margin-bottom: 10px;
 }
-h3{
-    font-family: 'Newsreader', serif;
-}
-p{
-    font-family: 'Inter Tight', sans-serif;
-}
+
 .side-articles{
  grid-area: side-news;
  margin-left: 10%;
@@ -71,16 +66,13 @@ p{
 }
 footer{
     grid-area: footer;
-    font-family: 'Newsreader', serif;
     color: black;
     margin-top: auto;
    height: 40px;
    padding-top: 20px;
    background-color: #ededed;
 }
-.footer-links{
-    padding: 20px;
-}
+
 .social-links{
     float: right;
     margin-right: 10px;
