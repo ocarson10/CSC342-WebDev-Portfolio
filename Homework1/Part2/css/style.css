@@ -9,24 +9,29 @@ body{
     "side-footer main main";
     margin: 0;
     padding: 0;
-    background-color: #e5e5e5;
     gap: 0;
     width: 100%;
-
+    background-color: #e5e5e5;
+    position: relative;
 }
 header{
-    width: 88vw;
+    display: flex;
+    width: 100vw;
+    margin-left: 11vw;
+    position: fixed;
 }
 aside{
     padding-top: 10px;
     grid-area: sidebar;
-    width: 200px;
+    width: 11vw;
+    min-width: 180px;
     background-color: #1a1a1d;
     color: white;
     padding-left: 10px;
     border-right: solid #35353a 2px;
-
-    
+    position: fixed;
+    height: 100vh;
+    z-index: 1;
 }
 #logo > p{
    margin-left: 20px; 
@@ -50,7 +55,7 @@ aside{
     text-decoration: none;
 }
 #links a:hover{
-    color: aqua;
+    color: darkcyan;
 }
 .dropdown:hover .sublinks{
     display: block;
@@ -78,7 +83,7 @@ aside img{
     margin-right: 20px;
 }
 #footer a:hover{
-    color: aqua;
+    color: darkcyan;
    
 }
 
@@ -88,7 +93,7 @@ aside img{
     color: white;
     grid-area: left-topbar;
     display: inline-flex;
-    width: 82%;
+    width: 69vw;
     height: 70px;
     font-size: 14pt;
     padding-top: 10px;
@@ -97,7 +102,7 @@ aside img{
 }
 #left-section > span{
     margin-right: 250px;
-    margin-left: 10px;
+    margin-left: 3vw;
     margin-top: 10px;
     font-size: 20pt;
     white-space: nowrap;
@@ -118,7 +123,7 @@ aside img{
     display: inline-flex;
     float: right;
     background-color:  #1a1a1d;
-    width: 18%;
+    width: 19vw;
     height: 70px;
     padding-top: 10px;
     border-bottom: solid #35353a 2px;
@@ -158,24 +163,48 @@ aside img{
 }
 .dropdowns{
     font-size: 10pt;
-    border: solit gray 1px;
-    width: 150px;
+    border: solid gray 1px;
+    width: 180px;
     background-color: #e5e5e5;
     display: none;
     position: fixed;
     margin-left: -100px;
 }
+.dropdowns h6,a{
+    color:#1a1a1d;
+    margin: 0;
+}
+.dropdowns a{
+    font-size: medium;
+}
+.dropdowns a:hover{
+    color:darkcyan;
+}
+.dropdowns small{
+    color: gray;
+    margin-bottom: 30px;
+}
+.dropdowns .drop-header{
+    font-size: large;
+    margin-left: 5px;
+}
 .dropdowns ul, a{
     list-style: none;
     text-decoration: none;
 }
+
 h6{
     font-size: 10pt;
 }
 #info-boxes{
     grid-area: infoboxes;
     display: flex;
-    width: 100%;
+    width: 88vw;
+    margin-left: 11vw;
+    margin-top: 8vh;
+    padding-left: 2vw;
+    padding-right: 2vw;
+    box-sizing: border-box;
     background-color:#e5e5e5;
     z-index: -1;
     justify-content: space-between;
@@ -223,9 +252,11 @@ main{
     background-color: white;
     z-index: -1;
     margin: 20px;
+    margin-left: 14vw;
     box-sizing: border-box;
     padding: 20px;
     border-radius: 10px;
+    width: 44vw;
 }
 #location1 h5{
     margin-top: -40px;
@@ -245,7 +276,7 @@ main{
 }
 #location1 img{
     margin-top: 20px;
-    width: 600px;
+    width: 35vw;
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -263,15 +294,17 @@ h4{
     grid-area: sidecharts;
     z-index: -1;
     height: 300px;
+    width: 20vw;
 }
 #location2{
     background-color: white;
-    width: 47.5%;
     margin: 20px;
     box-sizing: border-box;
     padding: 20px;
     border-radius: 10px;
     height: 400px;
+    width: 44vw;
+    margin-left: 14vw;;
 }
 #location2 h6{
     color: gray;
@@ -290,13 +323,13 @@ h4{
 }
 #location2 img{
     margin-top:-5px;
-    width: 600px;
+    width: 35vw;
     border:solid rgb(109, 108, 108) 1px;
     
 }
 #order{
     background-color: white;
-    width: 47.5%;
+    width: 36vw;
     margin: 20px;
     box-sizing: border-box;
     padding: 20px;
@@ -305,14 +338,14 @@ h4{
 }
 #order h6{
     color: gray;
-    margin-top: -40px;
+    margin-top: -30px;
 }
 #order img{
-    width: 350px;
+    width: 16vw;
     display: block;
     margin-left: auto;
     margin-right: auto;
-    margin-top: -40px;
+    margin-top: -6vh;
 }
 
 #bottom-charts{
@@ -333,9 +366,9 @@ h4{
     margin-top: -60px;
 }
 #side-charts img{
-    margin-top: -40px;
+    margin-top: -30px;
     margin-left: 50px;
-    width: 600px;
+    width: 30vw;
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -347,6 +380,8 @@ h4{
     padding: 20px;
     border-radius: 10px;
     height:300px;
+    width: 36vw;
+    margin-left: -8.5vw;
 
 }
 #traffic{
@@ -355,5 +390,7 @@ h4{
     padding: 20px;
     border-radius: 10px;
     height: 300px;
+    width: 36vw;
+    margin-left: -8.5vw;
 
 }
