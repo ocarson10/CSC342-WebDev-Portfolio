@@ -1,0 +1,359 @@
+@import url('https://fonts.googleapis.com/css2?family=Mukta:wght@500;600&display=swap');
+body{
+    font-family: 'Mukta', sans-serif;
+    display: grid;
+    grid-template-areas:
+    "sidebar     left-topbar right-topbar"
+    "sidebar     main main"
+    "sidebar     main main"
+    "side-footer main main";
+    margin: 0;
+    padding: 0;
+    background-color: #e5e5e5;
+    gap: 0;
+    width: 100%;
+
+}
+header{
+    width: 88vw;
+}
+aside{
+    padding-top: 10px;
+    grid-area: sidebar;
+    width: 200px;
+    background-color: #1a1a1d;
+    color: white;
+    padding-left: 10px;
+    border-right: solid #35353a 2px;
+
+    
+}
+#logo > p{
+   margin-left: 20px; 
+   margin-top: -10px;
+}
+#user p{
+    margin: 0;
+   
+}
+#user{
+    border-bottom: solid #35353a 2px;
+}
+
+#links{
+
+    margin-top: 20px;
+}
+#links a{
+    font-size: 18pt;
+    color: white;
+    text-decoration: none;
+}
+#links a:hover{
+    color: aqua;
+}
+.dropdown:hover .sublinks{
+    display: block;
+}
+.sublinks{
+    background-color: #35353a;
+    display: none;
+    margin-right: 10px;
+    padding-left: 10px;
+}
+aside img{
+    width: 150px;
+}
+#footer{
+    grid-area: side-footer;
+    position: fixed;
+    bottom: 0;
+
+}
+#footer a{
+    margin: 2px;
+    font-size: 16pt;
+    color: white;
+    text-decoration: none;
+    margin-right: 20px;
+}
+#footer a:hover{
+    color: aqua;
+   
+}
+
+
+#left-section{
+    background-color:  #1a1a1d;
+    color: white;
+    grid-area: left-topbar;
+    display: inline-flex;
+    width: 82%;
+    height: 70px;
+    font-size: 14pt;
+    padding-top: 10px;
+    border-bottom: solid #35353a 2px;
+
+}
+#left-section > span{
+    margin-right: 250px;
+    margin-left: 10px;
+    margin-top: 10px;
+    font-size: 20pt;
+    white-space: nowrap;
+}
+#left-section > form{
+    padding-top: 20px;
+    width: 50%;
+    white-space: nowrap;
+
+}
+#left-section input{
+    width: 80%;
+    height: 20px;
+}
+
+#right-section{
+    grid-area: right-topbar;
+    display: inline-flex;
+    float: right;
+    background-color:  #1a1a1d;
+    width: 18%;
+    height: 70px;
+    padding-top: 10px;
+    border-bottom: solid #35353a 2px;
+
+}
+#right-section #stu-btn{
+    height: 60px;
+    width: 70px;
+
+}
+#right-section button{
+    height: 40px;
+    width: 40px;
+    background-color: #1a1a1d;
+    border: solid #1a1a1d 1px;
+    color: white;
+    font-size: 10pt;
+}
+#right-section .icon{
+    margin-top: 15px;
+    font-size: 20px;
+}
+.icon span{
+    font-size: 12px;
+}
+
+ .drop-div:hover .dropdowns{
+    display: block;
+}
+  #right-section div{
+    margin-top: 0px;
+    margin-right: 10px;
+  }
+#stu-btn img{
+    width: 40px;
+    border-radius: 20px;
+}
+.dropdowns{
+    font-size: 10pt;
+    border: solit gray 1px;
+    width: 150px;
+    background-color: #e5e5e5;
+    display: none;
+    position: fixed;
+    margin-left: -100px;
+}
+.dropdowns ul, a{
+    list-style: none;
+    text-decoration: none;
+}
+h6{
+    font-size: 10pt;
+}
+#info-boxes{
+    grid-area: infoboxes;
+    display: flex;
+    width: 100%;
+    background-color:#e5e5e5;
+    z-index: -1;
+    justify-content: space-between;
+
+}
+.boxes{
+    background-color: white;
+    width: 300px;
+    height: 300px;
+    margin: 20px;
+    text-align: center;
+    box-sizing: border-box;
+    padding-top: 60px;
+    border-radius: 10px;
+}
+.boxes .box-title{
+    font-size: 20pt;
+    text-align: left;
+    margin-top: -60px;
+    margin-left: 10px;
+    color: gray;
+}
+.boxes h5{
+    font-size: 38pt;
+    margin-top: 5px;
+}
+.boxes p{
+    font-size: 15pt;
+    color: green;
+    margin-top: -25px;
+}
+img{
+    width: 50%;
+}
+main{
+    grid-area: main;
+    display: grid;
+    grid-template-areas:
+    "infoboxes infoboxes"
+    "location1 sidecharts"
+    "locationtwo locationtwo";
+}
+#location1{
+    grid-area: location1;
+    background-color: white;
+    z-index: -1;
+    margin: 20px;
+    box-sizing: border-box;
+    padding: 20px;
+    border-radius: 10px;
+}
+#location1 h5{
+    margin-top: -40px;
+    color: gray;
+}
+#location1 button{
+    border: none;
+    border-right: solid rgb(109, 108, 108) 1px;
+    border-top: solid rgb(109, 108, 108) 1px;
+    border-left: solid rgb(109, 108, 108) 1px;
+}
+
+#location1 table{
+    margin-top: -5px;
+    border: solid rgb(109, 108, 108) 1px; ;
+    font-size: 11pt;
+}
+#location1 img{
+    margin-top: 20px;
+    width: 600px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.shaded{
+    background-color: #e5e5e5;
+}
+h4{
+    margin-top: 0px;
+    font-size: 30px;
+}
+#side-charts{
+    margin: 20px;
+    box-sizing: border-box;
+    grid-area: sidecharts;
+    z-index: -1;
+    height: 300px;
+}
+#location2{
+    background-color: white;
+    width: 47.5%;
+    margin: 20px;
+    box-sizing: border-box;
+    padding: 20px;
+    border-radius: 10px;
+    height: 400px;
+}
+#location2 h6{
+    color: gray;
+    margin-top: -40px;
+}
+#location2 button{
+    border: none;
+    margin-right:-5px;
+    width:60px;
+    border-top: solid rgb(109, 108, 108) 1px;
+    border-right: solid rgb(109, 108, 108) 1px;
+    border-left: solid rgb(109, 108, 108) 1px;
+}
+#location2 button:hover{
+    background-color: #e5e5e5;
+}
+#location2 img{
+    margin-top:-5px;
+    width: 600px;
+    border:solid rgb(109, 108, 108) 1px;
+    
+}
+#order{
+    background-color: white;
+    width: 47.5%;
+    margin: 20px;
+    box-sizing: border-box;
+    padding: 20px;
+    border-radius: 10px;
+    height: 400px;
+}
+#order h6{
+    color: gray;
+    margin-top: -40px;
+}
+#order img{
+    width: 350px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -40px;
+}
+
+#bottom-charts{
+    grid-area: locationtwo;
+    display: flex;
+}
+#side-charts h3{
+    font-size: 30px;
+    margin-top: 0;
+}
+#side-charts h5{
+    color: gray;
+    margin-top: -30px;
+}
+#side-charts h2{
+    font-size: 30pt;
+    text-align: center;
+    margin-top: -60px;
+}
+#side-charts img{
+    margin-top: -40px;
+    margin-left: 50px;
+    width: 600px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+#impressions{
+    background-color: white;
+    margin-bottom: 45px;
+    box-sizing: border-box;
+    padding: 20px;
+    border-radius: 10px;
+    height:300px;
+
+}
+#traffic{
+    background-color: white;
+    box-sizing: border-box;
+    padding: 20px;
+    border-radius: 10px;
+    height: 300px;
+
+}
