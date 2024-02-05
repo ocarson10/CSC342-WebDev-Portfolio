@@ -1,5 +1,5 @@
 window.addEventListener('DOMContentLoaded', (e) => {
- 
+ let total;
 //first number
 let entryOne= '';
 //second number 
@@ -22,28 +22,49 @@ input.addEventListener('keydown', e => {
         if(currentState !== null && entryTwo !== ''){
             makeCalculaltion();
         }
+        if(input.value[input.value.length-1]=== '+' || input.value[input.value.length-1]=== '-'|| input.value[input.value.length-1]=== '*' || input.value[input.value.length-1]=== '/'){
+            console.log("not a number");
+            input.value = input.value.slice(0,-1);
+        }
         currentState = e.key;
     } else if (e.key === '-'){
         if(currentState !== null && entryTwo !== ''){
             makeCalculaltion();
+        }
+        if(input.value[input.value.length-1]=== '+' || input.value[input.value.length-1]=== '-'|| input.value[input.value.length-1]=== '*' || input.value[input.value.length-1]=== '/'){
+            console.log("not a number");
+            input.value = input.value.slice(0,-1);
         }
         currentState = e.key;
     } else if(e.key === '/'){
         if(currentState !== null && entryTwo !== ''){
             makeCalculaltion();
         }
+        if(input.value[input.value.length-1]=== '+' || input.value[input.value.length-1]=== '-'|| input.value[input.value.length-1]=== '*' || input.value[input.value.length-1]=== '/'){
+            console.log("not a number");
+            input.value = input.value.slice(0,-1);
+        }
         currentState = '÷';
     } else if (e.key === '*'){
         if(currentState !== null && entryTwo !== ''){
             makeCalculaltion();
         }
+        if(input.value[input.value.length-1]=== '+' || input.value[input.value.length-1]=== '-'|| input.value[input.value.length-1]=== '*' || input.value[input.value.length-1]=== '/'){
+            console.log("not a number");
+            input.value = input.value.slice(0,-1);
+        }
         currentState = '×';
     } else if( e.key === '=' || e.key === 'Enter'){
         e.preventDefault();
-        makeCalculaltion();
-        currentState = null;
-        history.push(total);
-        updateHistory();
+        if(currentState === null){
+            return;
+        }else{
+            makeCalculaltion();
+            currentState = null;
+            // history.push(total);
+            // updateHistory();
+        }
+        
 
     } else {
         e.preventDefault();
@@ -56,7 +77,7 @@ let btn = document.querySelectorAll('.number-btn');
 btn.forEach(element => {
     element.addEventListener('click', e =>{
         console.log(element.innerText);
-       if(currentState === null){
+      if(currentState === null){
         entryOne += element.innerText;
         input.value = entryOne;
        } else {
@@ -95,14 +116,20 @@ opperation.forEach( element => {
         }
         console.log(element.innerText);
         currentState = element.innerText;
-        input.value += currentState;
-    
+        console.log(input.value[input.value.length-1]);
+        if(input.value[input.value.length-1]=== '+' || input.value[input.value.length-1]=== '-'|| input.value[input.value.length-1]=== '×' || input.value[input.value.length-1]=== '÷'){
+            console.log("not a number");
+            input.value = input.value.slice(0,-1);
+        }
+            input.value += currentState;
+
+        
     })
 });
 
 let signChange = document.getElementById('plus-minus');
 signChange.addEventListener('click', e => {
-    if(currentState === null){
+   if(currentState === null){
         let floatNum = parseFloat(entryOne);
         floatNum *= -1;
         entryOne = String(floatNum);
@@ -117,15 +144,21 @@ signChange.addEventListener('click', e => {
 })
 let equals = document.getElementById('equal');
 equals.addEventListener('click', e => {
-    makeCalculaltion();
-    currentState = null;
-    history.push(total);
-    updateHistory();
+    console.log("current State" + currentState);
+    
+    if(currentState === null){
+        return;
+    }else{
+        makeCalculaltion();
+        currentState = null;
+        //history.push(total);
+       // updateHistory();
+    }
+  
 
 })
 
 function makeCalculaltion(){
-    let total;
     console.log(currentState);
     entryOne = parseFloat(entryOne);
     entryTwo = parseFloat(entryTwo);
@@ -145,11 +178,17 @@ function makeCalculaltion(){
         default:
             return;    
     }
-    input.value = total;
-    history.push(total);
-    updateHistory();
-    entryOne = total;
-    entryTwo = '';
+    console.log(total);
+    if(total === NaN || total === Infinity ){
+        errorMessage();
+    }else{
+        input.value = total;
+        history.push(total);
+        updateHistory();
+        entryOne = total;
+        entryTwo = '';
+    }
+  
 }
 function updateHistory(){
     if(history.length !=0){
@@ -160,4 +199,35 @@ function updateHistory(){
         return;
     }
 }
+function errorMessage(){
+    input.value = 'ERROR PLEASE CLEAR';
+    total = null;
+    document.getElementById("equal").disabled = true;
+    btn.forEach(element =>{
+        element.disabled = true;
+    })
+    opperation.forEach( element =>{
+        element.disabled = true;
+    })
+    signChange.disabled =true;
+    equals.disabled =true;
+    clearEntry.disabled =true;
+    input.disabled = true;
+
+    document.getElementById("clear").onclick = function (){
+        document.getElementById("equal").disabled = false;
+        btn.forEach(element =>{
+            element.disabled = false;
+        })
+        opperation.forEach( element =>{
+            element.disabled = false;
+        })
+        signChange.disabled =false;
+        equals.disabled =false;
+        clearEntry.disabled =false;
+        input.disabled = false;
+    }
+
+}
+    
 });

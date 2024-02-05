@@ -19,6 +19,9 @@ body{
     height: 10vh;
     font-size:xx-large;
 }
+#calculator input{
+    text-align: right;
+}
 #calculator button{
     border-radius: 5px;
     background-color: #DE3163;
