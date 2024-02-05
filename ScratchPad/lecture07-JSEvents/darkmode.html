@@ -59,6 +59,23 @@
             font-weight: bold;
         }
     </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', e => {
+            let chk = document.querySelector('input');
+            chk.addEventListener('change', e =>{
+                console.log(chk.checked);
+                //document.querySelector('html').style.filter = 'invert(${chk.checked ? 1: 0})';
+                let html = document.querySelector('html');
+                if(chk.checked){
+                    html.classList.add('invert');
+                } else {
+                    html.classList.remove('invert');
+
+                }
+            });
+            
+        });
+    </script>
 </head>
 
 <body>

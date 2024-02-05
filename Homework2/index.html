@@ -4,17 +4,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <script type="text/javascript" src="./js/calculations.js"></script>
     <title>Calculator</title>
 </head>
 
 <body>
     <div id="calculator">
-        <input type="number" id="user-input" />
+        <input type="text" id="user-input" />
+        <button class="number-btn" id="zero">0</button>
+        <button class="number-btn" id="one">1</button>
+        <button class="number-btn" id="two">2</button>
+        <button class="number-btn" id="three">3</button>
+        <button class="number-btn" id="four">4</button>
+        <button class="number-btn" id="five">5</button>
+        <button class="number-btn" id="six">6</button>
+        <button class="number-btn" id="seven">7</button>
+        <button class="number-btn" id="eight">8</button>
+        <button class="number-btn" id="nine">9</button>
+        <button class="number-btn" id="decimal">.</button>
+        <button class="opperation" id="division">&div;</button>
+        <button class="opperation" id="multiplication">&#xd7;</button>
+        <button class="opperation" id="addition">+</button>
+        <button class="opperation" id="subtraction">-</button>
+        <button class="equals" id="equal">=</button>
+        <button class="change-sign" id="plus-minus">+/-</button>
+        <button class="clearAll-btn" id="clear">C</button>
+        <button class="clear-btn" id="clear-entry">CE</button>
+
+
+
 
     </div>
-    <div id="history">
-
-    </div>
+    <section id =history>
+        <div id="past-entries">  
+            <h1>History</h1>  
+    
+        </div>
+        <button class="number-btn" id="clear">Clear History</button>
+    </section>
+   
 
 </body>
 

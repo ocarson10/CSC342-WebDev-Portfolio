@@ -1,0 +1,55 @@
+body{
+    display: flex;
+}
+#calculator{
+    display : grid;
+    grid-template-areas:
+    "input input input input"
+    "clear ce ce div"
+    "seven eight nine mult"
+    "four five six minus"
+    "one two three plus"
+    "sign zero dec equal";
+    background-color: pink;
+    border-radius: 10px;
+    padding: 25px;
+    gap: 5px;
+}
+#calculator button,input{
+    height: 10vh;
+    font-size:xx-large;
+}
+#calculator button{
+    border-radius: 5px;
+    background-color: #DE3163;
+    color: white;
+    border-color: #DE3163;
+}
+#history{
+    background-color: antiquewhite;
+    margin-left: 20px;
+    width: 400px;
+}
+#entries:hover{
+    background-color: #DE3163;
+}
+#user-input{ grid-area: input;}
+#zero{ grid-area: zero;}
+#one{ grid-area: one;}
+#two{ grid-area: two;}
+#three{ grid-area: three;}
+#four{ grid-area: four;}
+#five{ grid-area: five;}
+#six{ grid-area: six;}
+#seven{ grid-area: seven;}
+#eight{ grid-area: eight;}
+#nine{ grid-area: nine;}
+#decimal{ grid-area: dec;}
+#division{ grid-area: div;}
+#multiplication{ grid-area: mult;}
+#addition{ grid-area: plus;}
+#subtraction{ grid-area: minus;}
+#equal{ grid-area: equal;}
+#plus-minus{ grid-area: sign;}
+#clear{ grid-area: clear;}
+#clear-entry{ grid-area: ce;}

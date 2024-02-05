@@ -6,6 +6,13 @@
     <script>
         window.addEventListener('DOMContentLoaded', (e) => {
             const input = document.querySelector('input');
+            input.addEventListener('keydown', e =>{
+                console.log(e);
+                //only allows A and backspace keys to be pressed in input 
+                if(e.key !== 'A' && e.key !== 'Backspace'){
+                    e.preventDefault();
+                }
+            });
 
         });
     </script>
