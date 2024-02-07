@@ -5,7 +5,7 @@ body{
     display : grid;
     grid-template-areas:
     "input input input input"
-    "clear ce ce div"
+    "clear clear ce div"
     "seven eight nine mult"
     "four five six minus"
     "one two three plus"
@@ -14,15 +14,20 @@ body{
     border-radius: 10px;
     padding: 25px;
     gap: 5px;
+    height: 600px;
+    width: 500px;
 }
 #calculator button,input{
-    height: 10vh;
     font-size:xx-large;
+
 }
 #calculator input{
     text-align: right;
+    height: 80px;
+
 }
 #calculator button{
+    height: 90px;
     border-radius: 5px;
     background-color: #DE3163;
     color: white;
@@ -31,10 +36,27 @@ body{
 #history{
     background-color: antiquewhite;
     margin-left: 20px;
-    width: 400px;
+    width: 500px;
+    height: 650px;
+}
+.clear-history{
+    font-size: large;
+    margin: 10px;
+    
 }
 #entries:hover{
     background-color: #DE3163;
+}
+#past-entries{
+    height: 500px;
+    overflow-y: auto;
+}
+#history button{
+    border-radius: 5px;
+    background-color: #DE3163;
+    color: white;
+    border-color: #DE3163;
+    height: 50px;
 }
 #user-input{ grid-area: input;}
 #zero{ grid-area: zero;}
@@ -56,3 +78,4 @@ body{
 #plus-minus{ grid-area: sign;}
 #clear{ grid-area: clear;}
 #clear-entry{ grid-area: ce;}
+/* TODO: make calculator size fixed and history scrollable */

@@ -8,7 +8,9 @@ let entryTwo = '';
 let history =[];
 let currentState = null;
 //calculator display/input
+let hisitoryCleared = false;
 let input= document.getElementById('user-input');
+let entry;
 input.addEventListener('keydown', e => {
     console.log(e);
     if(!isNaN(e.key) || e.key === '.'){
@@ -19,41 +21,57 @@ input.addEventListener('keydown', e => {
             entryTwo += e.key;
            }
     }else if(e.key === '+'){
-        if(currentState !== null && entryTwo !== ''){
-            makeCalculaltion();
-        }
-        if(input.value[input.value.length-1]=== '+' || input.value[input.value.length-1]=== '-'|| input.value[input.value.length-1]=== '*' || input.value[input.value.length-1]=== '/'){
-            console.log("not a number");
-            input.value = input.value.slice(0,-1);
-        }
+        if(currentState === null && entryOne === ''){
+            e.preventDefault();
+        } else {
+            if(currentState !== null && entryTwo !== ''){
+                makeCalculaltion();
+            }
+            if(input.value[input.value.length-1]=== '+' || input.value[input.value.length-1]=== '-'|| input.value[input.value.length-1]=== '*' || input.value[input.value.length-1]=== '/'){
+                console.log("not a number");
+                input.value = input.value.slice(0,-1);
+            }
         currentState = e.key;
+        }
     } else if (e.key === '-'){
-        if(currentState !== null && entryTwo !== ''){
-            makeCalculaltion();
-        }
-        if(input.value[input.value.length-1]=== '+' || input.value[input.value.length-1]=== '-'|| input.value[input.value.length-1]=== '*' || input.value[input.value.length-1]=== '/'){
-            console.log("not a number");
-            input.value = input.value.slice(0,-1);
-        }
-        currentState = e.key;
+        if(currentState === null && entryOne === ''){
+            e.preventDefault();
+        } else {
+            if(currentState !== null && entryTwo !== ''){
+                makeCalculaltion();
+            }
+            if(input.value[input.value.length-1]=== '+' || input.value[input.value.length-1]=== '-'|| input.value[input.value.length-1]=== '*' || input.value[input.value.length-1]=== '/'){
+                console.log("not a number");
+                input.value = input.value.slice(0,-1);
+            }
+            currentState = e.key;
+        }   
     } else if(e.key === '/'){
-        if(currentState !== null && entryTwo !== ''){
-            makeCalculaltion();
+        if(currentState === null && entryOne === ''){
+            e.preventDefault();
+        } else {
+            if(currentState !== null && entryTwo !== ''){
+                makeCalculaltion();
+            }
+            if(input.value[input.value.length-1]=== '+' || input.value[input.value.length-1]=== '-'|| input.value[input.value.length-1]=== '*' || input.value[input.value.length-1]=== '/'){
+                console.log("not a number");
+                input.value = input.value.slice(0,-1);
+            }
+            currentState = '÷';
         }
-        if(input.value[input.value.length-1]=== '+' || input.value[input.value.length-1]=== '-'|| input.value[input.value.length-1]=== '*' || input.value[input.value.length-1]=== '/'){
-            console.log("not a number");
-            input.value = input.value.slice(0,-1);
-        }
-        currentState = '÷';
     } else if (e.key === '*'){
-        if(currentState !== null && entryTwo !== ''){
-            makeCalculaltion();
+        if(currentState === null && entryOne === ''){
+            e.preventDefault();
+        } else {
+            if(currentState !== null && entryTwo !== ''){
+                makeCalculaltion();
+            }
+            if(input.value[input.value.length-1]=== '+' || input.value[input.value.length-1]=== '-'|| input.value[input.value.length-1]=== '*' || input.value[input.value.length-1]=== '/'){
+                console.log("not a number");
+                input.value = input.value.slice(0,-1);
+            }
+            currentState = '×';
         }
-        if(input.value[input.value.length-1]=== '+' || input.value[input.value.length-1]=== '-'|| input.value[input.value.length-1]=== '*' || input.value[input.value.length-1]=== '/'){
-            console.log("not a number");
-            input.value = input.value.slice(0,-1);
-        }
-        currentState = '×';
     } else if( e.key === '=' || e.key === 'Enter'){
         e.preventDefault();
         if(currentState === null){
@@ -111,19 +129,22 @@ let clear = document.getElementById('clear');
 let opperation = document.querySelectorAll('.opperation');
 opperation.forEach( element => {
     element.addEventListener('click', e =>{
+        if(currentState === null && entryOne === ''){
+           return;
+        } else {
         if(currentState !== null && entryTwo !== ''){
             makeCalculaltion();
         }
-        console.log(element.innerText);
-        currentState = element.innerText;
-        console.log(input.value[input.value.length-1]);
-        if(input.value[input.value.length-1]=== '+' || input.value[input.value.length-1]=== '-'|| input.value[input.value.length-1]=== '×' || input.value[input.value.length-1]=== '÷'){
-            console.log("not a number");
-            input.value = input.value.slice(0,-1);
-        }
-            input.value += currentState;
+            console.log(element.innerText);
+            currentState = element.innerText;
+            console.log(input.value[input.value.length-1]);
+            if(input.value[input.value.length-1]=== '+' || input.value[input.value.length-1]=== '-'|| input.value[input.value.length-1]=== '×' || input.value[input.value.length-1]=== '÷'){
+                console.log("not a number");
+                input.value = input.value.slice(0,-1);
+            }
+                input.value += currentState;
 
-        
+        }   
     })
 });
 
@@ -150,6 +171,7 @@ equals.addEventListener('click', e => {
         return;
     }else{
         makeCalculaltion();
+
         currentState = null;
         //history.push(total);
        // updateHistory();
@@ -191,14 +213,54 @@ function makeCalculaltion(){
   
 }
 function updateHistory(){
-    if(history.length !=0){
+    if(history.length !==0){
         let lastEntry = history[history.length-1];
         document.getElementById('past-entries').innerHTML += `<div id="entries">${lastEntry}</div><br/>`;
-        
-    } else{
+        historyClick();
+
+    } else if( hisitoryCleared === true){
+        //clear all history elements using .remove
+        document.getElementById('past-entries').innerHTML = "";
+    }
+    else{
         return;
     }
+
 }
+ function historyClick(){
+     entry= document.querySelectorAll("#entries");
+    entry.forEach(element =>{
+        element.addEventListener('click', e =>{
+            console.log ("click: ", element.innerHTML);
+            if(currentState === null && entryOne ===''){
+                entryOne += element.innerHTML;
+                input.value = entryOne;
+
+                
+            }else if (currentState === null && entryOne !=='') {
+                return;
+            } else if (currentState !== null ){
+                entryTwo = element.innerHTML;
+                input.value = entryTwo;
+            }
+        })
+      
+        })
+
+    }
+let clearHistory = document.querySelector(".clear-history");
+clearHistory.addEventListener('click', e =>{
+    //  console.log("before: ",entry);
+    //  entry = entry.forEach(element => {
+    //     element.remove();
+    // })
+    // console.log("after: ",entry);
+    console.log (history);
+    history = [];
+    console.log("after ", history)
+    hisitoryCleared = true;
+    updateHistory();
+})
 function errorMessage(){
     input.value = 'ERROR PLEASE CLEAR';
     total = null;
