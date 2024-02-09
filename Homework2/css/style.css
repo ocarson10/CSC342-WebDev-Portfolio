@@ -1,5 +1,9 @@
-body{
+#top-content, #bottom-content{
+  
+    max-width: max-content;
+    margin: auto;
     display: flex;
+    margin-top: 40px;
 }
 #calculator{
     display : grid;
@@ -33,23 +37,56 @@ body{
     color: white;
     border-color: #DE3163;
 }
+#calculator button.green{
+    background-color: seagreen;
+    border-color: seagreen;
+}
+#calculator button.blue{
+    background-color: royalblue;
+    border-color: royalblue;
+}
+#calculator.green{
+    background-color: #C1E1C1;
+}
+#calculator.blue{
+    background-color: #9BD5FE;
+}
 #history{
-    background-color: antiquewhite;
+    background-color: rgb(243, 188, 196);
     margin-left: 20px;
     width: 500px;
     height: 650px;
+    border-radius: 10px;
+    font-size: x-large;
+}
+#history.green{
+    background-color: #C1E1C1;
+}
+#history.blue{
+    background-color: #9BD5FE;
+}
+#history h1{
+    margin-left: 15px;
+
 }
 .clear-history{
     font-size: large;
     margin: 10px;
     
 }
-#entries:hover{
-    background-color: #DE3163;
+#entries{
+    margin-left: 20px;
+
 }
+#entries:hover{
+    background-color: white;
+
+}
+
 #past-entries{
-    height: 500px;
+    height: 470px;
     overflow-y: auto;
+    font-size: x-large;
 }
 #history button{
     border-radius: 5px;
@@ -57,6 +94,22 @@ body{
     color: white;
     border-color: #DE3163;
     height: 50px;
+}
+#history button.green{
+    background-color: seagreen;
+    border-color: seagreen;
+}
+#history button.blue{
+    background-color: royalblue;
+    border-color: royalblue;
+}
+#instructions{
+    width: 50%;
+    margin: 10px;
+    margin-left: 10vw;
+}
+#theme{
+    margin: 10px;
 }
 #user-input{ grid-area: input;}
 #zero{ grid-area: zero;}

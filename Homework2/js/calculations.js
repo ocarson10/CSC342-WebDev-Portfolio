@@ -7,8 +7,9 @@ let entryTwo = '';
 //history array
 let history =[];
 let currentState = null;
-//calculator display/input
 let hisitoryCleared = false;
+
+//calculator display/input
 let input= document.getElementById('user-input');
 let entry;
 input.addEventListener('keydown', e => {
@@ -167,7 +168,7 @@ let equals = document.getElementById('equal');
 equals.addEventListener('click', e => {
     console.log("current State" + currentState);
     
-    if(currentState === null){
+    if(currentState === null ){
         return;
     }else{
         makeCalculaltion();
@@ -201,9 +202,10 @@ function makeCalculaltion(){
             return;    
     }
     console.log(total);
-    if(total === NaN || total === Infinity ){
+    if(total == NaN || total === Infinity || isNaN(total) ){
         errorMessage();
     }else{
+        console.log("1",total);
         input.value = total;
         history.push(total);
         updateHistory();
@@ -291,5 +293,89 @@ function errorMessage(){
     }
 
 }
+
+let themePink = document.getElementById('pink');
+let themeBlue = document.getElementById('blue');
+let themeGreen = document.getElementById('green');
+let calculator = document.querySelector('#calculator');
+let calcBtns = document.querySelectorAll('#calculator button');
+let historyColor = document.querySelector('#history');
+let historyBtn = document.querySelector('#history button');
+themePink.addEventListener('click', e =>{
+    console.log("Pink: ", themePink.checked);
+    console.log("Blue: ",themeBlue.checked);
+    console.log("Green: ",themeGreen.checked);
+    if(themePink.checked === true){
+        calculator.classList.remove('green');
+        calculator.classList.remove('blue');
+        calcBtns.forEach(element =>{
+            element.classList.remove('green');
+            element.classList.remove('blue');
+        })
+        historyColor.classList.remove('green');
+        historyColor.classList.remove('blue');
+        historyBtn.classList.remove('green');
+        historyBtn.classList.remove('blue');
+        
+
+    }
+})
+themeBlue.addEventListener('click', e =>{
+    console.log("Pink: ", themePink.checked);
+    console.log("Blue: ",themeBlue.checked);
+    console.log("Green: ",themeGreen.checked);
+    if(themeBlue.checked === true){
+        calculator.classList.add('blue');
+        calcBtns.forEach(element =>{
+        element.classList.remove('green');
+        element.classList.add('blue');
+        })
+        historyColor.classList.add('blue');
+        historyColor.classList.remove('green');
+        historyBtn.classList.add('blue');
+       
+
+    } else {
+        calculator.classList.remove('blue');
+        calcBtns.forEach(element =>{
+        element.classList.remove('blue');
+        })
+        historyColor.classList.remove('blue');
+       
+        historyBtn.classList.remove('blue');
+
+
+    }
+})
+   
+
+themeGreen.addEventListener('click', e =>{
+    console.log("Pink: ", themePink.checked);
+    console.log("Blue: ",themeBlue.checked);
+    console.log("Green: ",themeGreen.checked);
+    if(themeGreen.checked === true){
+        calculator.classList.remove('blue');
+        
+        calculator.classList.add('green');
+        calcBtns.forEach(element =>{
+        element.classList.remove('blue');
+        element.classList.add('green');
+        })
+        historyColor.classList.remove('blue');
+        historyColor.classList.add('green');
+        historyBtn.classList.remove('blue');
+        historyBtn.classList.add('green');
+       
+    } else {
+        calculator.classList.remove('green');
+        calcBtns.forEach(element =>{
+        element.classList.remove('green');
+        historyColor.classList.remove('green');
+        historyBtn.classList.remove('green');
+
+        })
+    }
+})
+
     
 });

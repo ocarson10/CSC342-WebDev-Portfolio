@@ -9,7 +9,9 @@
     <title>Calculator</title>
 </head>
 
-<body>
+<body>        
+    <div id="top-content">
+    
     <div id="calculator">
         <input type="text" id="user-input" />
         <button class="number-btn" id="zero">0</button>
@@ -44,7 +46,32 @@
         </div>
         <button class="clear-history" id="clear">Clear History</button>
     </section>
-   
+    </div>
+    <div id="bottom-content">
+        <section id="instructions">
+            <h3>Calculator Instructions</h3>
+            <p>To use calculator press buttons or click input at the top of the calculator to insert numbers and opperators. The following opperators can be used:</p>
+            <p> + for Addition</p>
+            <p> - for Subtraction</p>
+            <p> / for Division</p>
+            <p> * for Multiplication</p>
+            <p> = for Equals</p>
+
+
+
+        </section>
+        
+        <section id = change-theme>
+            <p>Click below to change theme:</p>
+            <input type="radio" id="pink" name="theme">
+            <label for="pink" >Pink</label><br>
+            <input type="radio" id="blue" name="theme">
+            <label for="blue">Blue</label><br>
+            <input type="radio" id="green" name="theme">
+            <label for="green">Green</label><br>
+        </section>
+    </div>
+    
 
 </body>
 
