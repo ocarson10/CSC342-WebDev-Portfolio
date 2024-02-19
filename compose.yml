@@ -20,11 +20,10 @@ services:
       - ./Homework2:/usr/local/apache2/htdocs
 
   hw3:
+    image: httpd:latest
     build: 
       dockerfile: Dockerfile
       context: "./Homework3"
-    ports:
-      - "3000:3000"
     restart: unless-stopped
     volumes:
       - ./Homework3:/usr/local/app
