@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+body{
+    background-color:#e7e5e5;
+    font-family: "Roboto", sans-serif;
+    margin:0;
+    color:#1a463d;
+
+}
+.formcontainer{
+    width: 100%;
+    margin-top: 2%;
+    text-align: center;
+    
+}
+.sender{
+    display: inline-block;
+    width: 30%;
+    padding: 20px;
+    min-width: 300px;
+    text-align:left;
+    border-right: 2px solid #1a463d;
+    margin-left:10%;
+   
+
+}
+.sender input{
+    display: inline-block;
+    width: 100%;
+
+}
+.image{
+    height: 225px;
+    width: 225px;
+    background-color: white;
+    border: 3px solid #1a463d;
+    
+}
+.sender label{
+
+    display: inline-block;
+    width: 40%;
+    margin: 5px;
+    margin-right: 5%;
+    margin-top: 20px;
+
+}
+.recipient{
+    display: inline-block;
+    min-width: 400px;
+    width: 40%;
+    padding: 10px;
+    text-align:left;
+
+}
+.recipient input{
+    display: inline-block;
+    width: 100%;
+
+}
+.recipient label{
+    display: inline-block;
+    width: 40%;
+    margin: 5px;
+    margin-right: 5%;
+    margin-top: 20px;
+
+}
+#messages{
+    display: block;
+    width: 90%;
+}
+.message-txt{
+    display: block;
+    width:100%;
+    height: 100px;
+    text-wrap: wrap;
+}
+
+#notify{
+    width: 100%;
+    
+}
+
+#notify label{
+    display: inline;
+    text-wrap:nowrap;
+}
+#notify input{
+    width: 8%;
+}
+
+.payment{
+    min-width: 400px;
+    display: inline-block;
+    width: 50%;
+    text-align:left;
+    margin-top: 10px;
+    padding-left: 20px;
+    margin-left: 10%;
+}
+.payment input{
+    display: inline-block;
+    width: 100%;
+}
+.payment label{
+    display: inline-block;
+    width: 40%;
+    margin: 5px;
+    margin-right: 5%;
+    margin-top: 20px;
+
+}
+.terms input{
+    width: 9%;
+    margin-right: 10px;
+}
+input[type="text"],input[type="email"],input[type="number"],input[type="password"],select,textarea,img,option{
+    background-color: white;
+}
+
+input[type="submit"]{
+    background-color: #286e60;
+    color:white;
+    margin-top:10px;
+    margin-left: 20%;
+    height: 50px;
+    font-size: xx-large;
+    width: 50%;
+}
+header{
+    margin-top: -45px;
+    min-width: 100vw;
+    height: 100px;
+    font-size: xx-large;
+    background-color: #286e60;
+    text-align: center;
+    color: white;
+}

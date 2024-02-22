@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pay Your Friends</title>
+    <script src="/js/form.js" type="text/javascript"></script>
+    <link href='./css/style.css' rel='stylesheet' />
+  </head>
+  <body>
+    <header>
+      <h1>Pay Your Friends</h1>
+    </header>
+    <div class="formcontainer">
+      <form
+        class="mainForm"
+        method="get"
+        action="formdata"
+        enctype="multipart/form-data"
+      >
+        
+        <div class="sender">
+          <h1>Sender Details</h1>
+          <h4>Preview Image Before Upload</h4>
+          <div class="image">
+            <img
+            id="previewImage"
+            alt="Preview"
+            style="max-width: 225px; max-height: 225px"
+          />
+          </div>
+          <br />
+          <input type="file" id="imageInput" accept="image/*" />
+          <br />
+          <label>
+            First Name <br />
+            <input
+            type="text"
+            id="first-name"
+            name="first-name"
+            required
+            />
+          </label> 
+          <label>
+            Last Name <br />
+            <input
+            type="text"
+            id="last-name"
+            name="last-name"
+            required
+            />
+          </label> 
+         
+        </div>
+
+        <div class="recipient">
+          <h1>Recipient Details</h1>
+          <label>
+            First Name <br />
+            <input
+            type="text"
+            id="first-name-rec"
+            name="first-name-rec"
+            required
+            />
+          </label>
+          <label>
+            Last Name <br />
+            <input
+            type="text"
+            id="last-name-rec"
+            name="last-name-rec"
+            required
+            />
+          </label> 
+          <label id="messages">
+            Message
+            <textarea class="message-txt" id="message" name="message" required></textarea>
+          </label>
+          <label id="notify">
+            Notify Recipient: <br/>
+            <label for="email-btn">
+              <input type="radio" id="email-btn" name="notify" value="Email"/>Email
+            </label>
+            
+            <label for="sms">
+              <input type="radio" id="sms" name="notify" value="SMS"/>
+              SMS
+            </label>
+            
+            <label for="no-notify">
+              <input type="radio" id="no-notify" name="notify" value="No-notify"/>
+              Do not notify
+            </label>
+          </label>
+          <label>
+            Email <br />
+            <input type="email" id="email" name="email"/>
+          </label>
+          <label>
+          Phone Number <br />
+            <small>Format: 111-222-3333</small> <br />
+            <input type="text" id="phone" name="phone" maxlength="12" />
+          </label>
+        </div>
+        <div class="payment">
+          <h1>Payment Details</h1>
+            <label for="card-type">Card Type <br />  <select name="card-type" id="card-type">
+              <option value="american-express">American Express</option>
+              <option value="discover">Discover</option>
+              <option value="masterCard">MasterCard</option>
+              <option value="visa">Visa</option>
+            </select>
+          </label>
+          <label>
+            Card Number <br />
+            <input type="text" id="card" name="card" placeholder="XXXX-XXXX-XXXX-XXXX" maxlength="20" required/>
+          </label>
+          <label>
+            Expiration Date <br />
+            <input type="text" placeholder="MM / YY" id="expiration" name="expiration" maxlength="7" required/>
+          </label>
+          <label>
+            CVV <br />
+            <input type="password" id="ccv" name="ccv" maxlength="4" minlength="3" required/>
+          </label>
+          <label>
+            Amount ($) <br />
+            <input type="number" id="amount" name="amount" required/>
+          </label>
+          <label  class="terms" for="terms">
+            <input type="checkbox" id="terms" name="terms" value="Agree" required>I agree to the Terms and Conditions <br />
+          </label>
+          <br />
+          <input type="submit" id="send" value="Send"/>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
