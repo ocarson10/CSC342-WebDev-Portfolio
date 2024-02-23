@@ -21,7 +21,7 @@ app.get('/', (req,res) =>{
     res.sendFile(html_dir + 'form.html');
 })
 app.post('/send', upload.single('image'), (req, res) => {
-    if(issendValid(req)){
+    if(isFormDataValid(req)){
         res.sendFile(html_dir + 'success.html');
     } else {
         fs.unlink(req.file.path, (err) => {
