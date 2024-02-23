@@ -20,8 +20,8 @@ app.use(express.urlencoded({extended: true}));
 app.get('/', (req,res) =>{
     res.sendFile(html_dir + 'form.html');
 })
-app.post('/formdata', upload.single('image'), (req, res) => {
-    if(isFormDataValid(req)){
+app.post('/send', upload.single('image'), (req, res) => {
+    if(issendValid(req)){
         res.sendFile(html_dir + 'success.html');
     } else {
         fs.unlink(req.file.path, (err) => {
