@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pay Your Friends</title>
-    <script src="/js/form.js" type="text/javascript"></script>
+    <script src="/js/form.js" type="module"></script>
     <link href='./css/style.css' rel='stylesheet' />
   </head>
   <body>
@@ -15,7 +15,7 @@
     <div class="formcontainer">
       <form
         class="mainForm"
-        method="get"
+        method="post"
         action="formdata"
         enctype="multipart/form-data"
       >
@@ -31,7 +31,7 @@
           />
           </div>
           <br />
-          <input type="file" id="imageInput" accept="image/*" />
+          <input type="file" id="imageInput" name="image" accept="image/*" required/>
           <br />
           <label>
             First Name <br />
@@ -76,7 +76,7 @@
           </label> 
           <label id="messages">
             Message
-            <textarea class="message-txt" id="message" name="message" required></textarea>
+            <textarea class="message-txt" id="message" name="message" minlength="10" required></textarea>
           </label>
           <label id="notify">
             Notify Recipient: <br/>
@@ -106,7 +106,7 @@
         </div>
         <div class="payment">
           <h1>Payment Details</h1>
-            <label for="card-type">Card Type <br />  <select name="card-type" id="card-type">
+            <label for="card-type">Card Type <br />  <select name="card-type" id="card-type" required>
               <option value="american-express">American Express</option>
               <option value="discover">Discover</option>
               <option value="masterCard">MasterCard</option>
@@ -115,11 +115,11 @@
           </label>
           <label>
             Card Number <br />
-            <input type="text" id="card" name="card" placeholder="XXXX-XXXX-XXXX-XXXX" maxlength="20" required/>
+            <input type="text" id="card" name="card" placeholder="XXXX-XXXX-XXXX-XXXX" maxlength="19" required/>
           </label>
           <label>
             Expiration Date <br />
-            <input type="text" placeholder="MM / YY" id="expiration" name="expiration" maxlength="7" required/>
+            <input type="text" placeholder="MM / YY" id="expiration" name="expiration" maxlength="5" required/>
           </label>
           <label>
             CVV <br />
@@ -127,7 +127,7 @@
           </label>
           <label>
             Amount ($) <br />
-            <input type="number" id="amount" name="amount" required/>
+            <input type="text" id="amount" name="amount" required/>
           </label>
           <label  class="terms" for="terms">
             <input type="checkbox" id="terms" name="terms" value="Agree" required>I agree to the Terms and Conditions <br />
