@@ -8,30 +8,16 @@ export function checkNameValid(first,last){
         return true;
     }
 }
-// export function isValidInput(img, sfirst, slast, rfirst, rlast, message, notify, email, phone,cardNum,expiration,ccv,amount,terms)
-// {
-//     if(!checkNames(sfirst) || !checkNames(slast) || !checkNames(rfirst)|| !checkNames(rlast)){
-//         return false;
-//     } else if (!img.complete || !checkMessage(message)|| !notifyChecked(notify, email, phone) || !checkCardNum(cardNum) || !checkExpiration(expiration) || !checkCCV(ccv) || !checkAmount(amount) || !checkTerms(terms)){
-//         return false;
-    
-//     } else {
-//         return true;
-//     } 
-    
-    
-// }
+
 
 export function checkNames(name){
     name = name.replace(/\s/g,'');
     if (name == ''){
-        //alert("cannont have empty strings");
         return false;
     }
 }
 export function checkMessage(message){
     if(message.length < 10){
-       // alert("message too short!");
         return false;
     }
 }
@@ -87,18 +73,16 @@ export function checkCardNum(cardNum){
 export function checkExpiration(expiration){
     var currentDate = new Date();
     var cMonth = parseInt(currentDate.getMonth().toString()) + 1;
-    // var cYear = currentDate.getFullYear.toString().slice(-2);
     var cYear = parseInt(currentDate.getFullYear().toString().slice(-2));
     var month = parseInt(expiration.slice(0,2));
     var year = parseInt(expiration.slice(-2));
     console.log(month, year, currentDate, cMonth, cYear);
     if(month === NaN || year === NaN){
-      //  alert("please input proper date")
         return false;
     } else if(month <= 12 && month > 0){
         if(year > cYear){
             return true;
-        }else if (year === cYear && month < cMonth){
+        }else if (year === cYear && month > cMonth){
             return true;
         } else{
             return false;

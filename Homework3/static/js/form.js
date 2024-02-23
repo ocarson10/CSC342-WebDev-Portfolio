@@ -45,8 +45,7 @@ const imageInput = document.getElementById('imageInput');
       });
       imageInput.addEventListener('change', previewSelectedImage);
 
-      // TODO add event listener to check which notification has been selected
-      // based on selection, disable email or phone inputs or both
+     
       const notifications = document.querySelectorAll('input[type="radio"][name="notify"]');
       const emailNotify = document.getElementById('email');
       const smsNotify = document.getElementById('phone');
@@ -74,11 +73,10 @@ const imageInput = document.getElementById('imageInput');
       });
 
       submitBtn.addEventListener('click', e =>{
-         //const image = document.getElementById('previewImage');
-         const firstSender = document.getElementById('first-name');
-         const lastSender = document.getElementById('last-name');
-         const firstRecipient = document.getElementById('first-name-rec');
-         const lastRecipient = document.getElementById('last-name-rec');
+         const firstSender = document.getElementById('firstName');
+         const lastSender = document.getElementById('lastName');
+         const firstRecipient = document.getElementById('firstNameRec');
+         const lastRecipient = document.getElementById('lastNameRec');
          const message = document.getElementById('message');
          const notifications = document.querySelectorAll('input[type="radio"][name="notify"]');
          const email = document.getElementById('email');
@@ -122,10 +120,7 @@ const imageInput = document.getElementById('imageInput');
          } else if(validate.checkTerms(terms)=== false){
             alert("Please check that you have read Terms and Conditions") ;
             e.preventDefault();
-         }else if(validate.checkNameValid(firstSender.value,lastSender.value) === false){
-            alert("invalid attempt USER");
-            e.preventDefault();
-         } 
+         }
 
       });
 
