@@ -14,9 +14,19 @@ const html_dir = path.join(__dirname, '../../src/templates/');
 frontendRouter.get('/', (req, res) => {
     res.sendFile(`${html_dir}index.html`);
   });
+
+  frontendRouter.get('/profile', (req,  res) => {
+    if(req.query.id && req.session.visitedUsers && !req.session.visitedUsers.includes(req.query.id)) {
+      req.session.visitedUsers.push(req.query.id);
+    }
+    
+    res.sendFile(`${html_dir}user.html`);
+  });
+
   frontendRouter.get('/login', (req, res) => {
     res.sendFile(`${html_dir}login.html`);
   });
+
 frontendRouter.post('/login', (req, res) => {
     console.log(req.body);
     const username = req.body.username;
@@ -34,10 +44,11 @@ frontendRouter.post('/login', (req, res) => {
         res.status(401).send('Invalid user');
     })
     
-})
+});
 frontendRouter.get('/dashboard', (req, res) => {
-    const Howler = req.cookies.Howler ? req.cookies.Howler:null;
+    const Howler = req.session.user ? req.session.user:null;
     const username = Howler ? Howler.username: null;
+    console.log("THIS IS A USERNAME", username);
     if(username){
         res.sendFile(`${html_dir}dashboard.html`, {username});
        

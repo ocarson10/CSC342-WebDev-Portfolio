@@ -2,25 +2,13 @@ import api from './APIClient.js';
 
 const howlsMain = document.getElementById('howls');
 
-//Could be added to common.js page for all main pages, start of section
-const header = document.getElementById('header');
-api.getCurrentUser().then(user => {
-    console.log('THIS IS USER', user.username);
-    document.getElementById('username').innerHTML = `${user.username}`;
-    const avatar = document.createElement('img');
-    avatar.src = `${user.avatar}`;
-    avatar.alt = 'User Avatar';
-    header.appendChild(avatar);
 
-}).catch(() => {
-    // document.location = "/error";
-    console.log("error");
-})
-//end of section
 
 
 api.getFollowersHowls().then(howls =>{
     howls.forEach(howl => {
+        const link = document.createElement('a');
+        link.href = '/profile?id=' + howl.userId;
         const postAvatar = document.createElement('img');
         postAvatar.alt = "User Avatar";
         const postUser = document.createElement('h4');
@@ -35,7 +23,8 @@ api.getFollowersHowls().then(howls =>{
         console.log("HOWLS:",howl);
         const div = document.createElement('div');
         const date = document.createElement('p');
-        div.append(postAvatar);
+        link.append(postAvatar);
+        div.append(link);
         div.append(postName);
         div.append(postUser);
         date.innerHTML = howl.datetime;

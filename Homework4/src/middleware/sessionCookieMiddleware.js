@@ -30,7 +30,7 @@ module.exports = (req, res, next) => {
 function generateEmptySession() {
   return {
     user: null,
-    HowlsPosted: []
+    visitedUsers: []
   }
 }
 

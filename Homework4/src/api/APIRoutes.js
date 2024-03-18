@@ -57,14 +57,14 @@ apiRouter.get('/users/current', (req,  res) => {
       res.status(401).json({error: 'Not authenticated'});
     }
   });
-//   apiRouter.get('/users/current/howls', (req,  res) => {
-//     if(req.session.user) {
-//       res.json(req.session.HowlsPosted);
-//     }
-//     else {
-//       res.status(401).json({error: 'Not authenticated'});
-//     }
-//   });
+  apiRouter.get('/users/current/profiles', (req,  res) => {
+    if(req.session.user) {
+      res.json(req.session.visitedUsers);
+    }
+    else {
+      res.status(401).json({error: 'Not authenticated'});
+    }
+  });
 
 apiRouter.get('/users/:userId', (req, res) => {
     if(req.session.user){
@@ -82,5 +82,25 @@ apiRouter.get('/users/:userId', (req, res) => {
     } else {
         res.status(401).json({error: 'Not authenticated'});
     }
+})
+
+apiRouter.get('/following/:userId', (req,res) => {
+    if(req.session.user) {
+        const userId = req.params.userId;
+       FollowerDAO.getUsersFollowing(userId).then(following => {
+        console.log(following);
+        if(following){
+            res.json(following);
+        } else{
+            res.status(404).json({error: 'No Following found'});
+        }
+       })  
+        .catch(err => {
+            res.status(500).json({error: 'Internal server error'});
+        })  
+      }
+      else {
+        res.status(401).json({error: 'Not authenticated'});
+      }
 })
 module.exports = apiRouter;

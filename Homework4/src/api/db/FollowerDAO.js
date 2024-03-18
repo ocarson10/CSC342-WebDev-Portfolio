@@ -26,12 +26,14 @@ module.exports = {
     //gets following of a specific user
     getUsersFollowing: (userId) => {
         return new Promise((resolve, reject) => {
-            users.forEach(user => {
-                if(user.userId === userId){
-                    resolve(user.following);
-                }
-            })
-               reject();
+            const following = users[userId].following;
+            resolve(following);
+            // users.forEach(user => {
+            //     if(user.userId == userId){
+            //         resolve(user.following);
+            //     }
+            // })
+             
           
         });
     },

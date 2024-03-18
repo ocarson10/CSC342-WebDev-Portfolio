@@ -46,6 +46,14 @@ const getUsersById = (id) => {
   return HTTPClient.get(`/users/${id}`);
 };
 
+const getVisitedUsers = () => {
+  return HTTPClient.get('/users/current/profiles');
+};
+
+const getUsersFollowing = (id) => {
+  return HTTPClient.get(`/following/${id}`);
+};
+
 // const getParksByCountyId = (countyId) => {
 //   if(countyId == "all") {
 //     return getParks();
@@ -60,4 +68,6 @@ export default {
  getFollowersHowls,
  getCurrentUser,
  getUsersById,
+ getVisitedUsers,
+ getUsersFollowing,
 };
