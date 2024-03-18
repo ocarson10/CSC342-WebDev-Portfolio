@@ -25,8 +25,8 @@ frontendRouter.post('/login', (req, res) => {
     .then(user => {
         console.log(req.session);
         req.session.user = user;
-        console.log(req.session);
-        res.cookie('Howler', user);
+        console.log('THIS IS THE CURRENT USER',req.session.user);
+        //res.cookie('Howler', user);
         res.redirect(302, '/dashboard');
     })
     .catch(error => {
@@ -52,7 +52,7 @@ frontendRouter.get('/dashboard', (req, res) => {
 frontendRouter.get('/logout', (req, res) => {
     // res.sendFile(`${html_dir}dashboard.html`);
     req.session.user = null;
-    res.clearCookie('Howler');
+   // res.clearCookie('Howler');
     res.redirect(302, '/');
   });
 module.exports = frontendRouter;

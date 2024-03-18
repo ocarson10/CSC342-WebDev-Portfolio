@@ -14,12 +14,14 @@ module.exports = (req, res, next) => {
     let sessionId = req.cookies['Howler'];
   
     console.log('Oh look,', sessionId, 'is back!');
+    console.log('THIS IS YOUR COOKIE' ,req.cookies['Howler']);
     if(!sessions[sessionId]) {
       //This happens if the client has a cookie from before our server restarted
       //We need to create a new entry for this user
       sessions[sessionId] = generateEmptySession();
     }
     req.session = sessions[sessionId] //store session object in the request
+    console.log('THIS IS YOUR SESSION' ,req.session);
   }
   next(); //Make sure we call the next middleware
 }

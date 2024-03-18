@@ -47,6 +47,7 @@ apiRouter.get('/followers/howls', (req,res) => {
    
 })
 
+
 //USER ENDPOINTS
 apiRouter.get('/users/current', (req,  res) => {
     if(req.session.user) {
@@ -64,4 +65,22 @@ apiRouter.get('/users/current', (req,  res) => {
 //       res.status(401).json({error: 'Not authenticated'});
 //     }
 //   });
+
+apiRouter.get('/users/:userId', (req, res) => {
+    if(req.session.user){
+        const userId = req.params.userId;
+        UserDAO.getUserById(userId).then(user => {
+            if(user){
+                res.json(user);
+            }  else {
+                res.status(404).json({error: 'No User found'});
+            }
+        })
+        .catch(err => {
+            res.status(500).json({error: 'Internal server error'});
+        })  
+    } else {
+        res.status(401).json({error: 'Not authenticated'});
+    }
+})
 module.exports = apiRouter;
