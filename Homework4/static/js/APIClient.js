@@ -1,57 +1,49 @@
+import HTTPClient from "./HTTPClient.js";
+
 const API_BASE = '/api';
-
-class HTTPClient {
-  static get(url) {
-    return fetch(`${API_BASE}${url}`)
-    .then(res => {
-        if(res.ok) {
-          return res.json();
-        }
-        throw new Error('Network response was not ok.');
-      })
-      .catch(err => {
-        console.log(err);
-        throw err;
-      });
-  }
-
-  static post(url, data) {
-    // TODO: Implement
-  }
-
-  static put(url, data) {
-    // TODO: Implement
-  }
-
-  static delete(url) {
-    // TODO: Implement
-  }
-};
-
 
 
 const getHowlsById = (id) => {
-  return HTTPClient.get(`/howls/${id}`);
+  return HTTPClient.get(`${API_BASE}/howls/${id}`);
 };
 
 const getFollowersHowls = () => {
-  return HTTPClient.get(`/followers/howls`);
+  return HTTPClient.get(`${API_BASE}/followers/howls`);
 };
 
 const getCurrentUser = () => {
-  return HTTPClient.get('/users/current');
+  return HTTPClient.get(`${API_BASE}/users/current`);
 };
 
 const getUsersById = (id) => {
-  return HTTPClient.get(`/users/${id}`);
+  return HTTPClient.get(`${API_BASE}/users/${id}`);
 };
 
 const getVisitedUsers = () => {
-  return HTTPClient.get('/users/current/profiles');
+  return HTTPClient.get(`${API_BASE}/users/current/profiles`);
 };
 
 const getUsersFollowing = (id) => {
-  return HTTPClient.get(`/following/${id}`);
+  return HTTPClient.get(`${API_BASE}/following/${id}`);
+};
+const logIn = (username) => {
+  const data = {
+    username: username
+  }
+  return HTTPClient.post(`${API_BASE}/users/login`, data);
+};
+const logOut = () => {
+  return HTTPClient.post(`${API_BASE}/users/logout`, {});
+};
+
+const followUser = (currentUserId ,userId) => {
+
+  return HTTPClient.put(`${API_BASE}/following/${currentUserId}/follows/${userId}`);
+};
+
+const unfollowUser = (currentUserId ,userId) => {
+  return HTTPClient.delete(`${API_BASE}/following/${currentUserId}/follows/${userId}`);
+
 };
 
 // const getParksByCountyId = (countyId) => {
@@ -70,4 +62,8 @@ export default {
  getUsersById,
  getVisitedUsers,
  getUsersFollowing,
+ logIn,
+ logOut,
+ followUser,
+ unfollowUser,
 };

@@ -25,8 +25,9 @@ module.exports = {
             if(user){
                 resolve(user);
             } else {
-                reject(new Error('User not Found'));
+                reject({code: 401, message: "No such user"});
             }
         });
-    }
+    },
+    
 }

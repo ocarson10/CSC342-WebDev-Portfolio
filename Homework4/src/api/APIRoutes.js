@@ -1,15 +1,21 @@
 const express = require('express');
+const cookieParser = require('cookie-parser');
 const apiRouter = express.Router();
 
 const UserDAO = require('./db/UserDAO');
 const FollowerDAO = require('./db/FollowerDAO');
 const HowlDAO = require('./db/HowlDAO');
 
+
+
+apiRouter.use(cookieParser());
 apiRouter.use(express.json());
+
+const {SessionMiddleware, initializeSession, removeSession} = require('../middleware/sessionCookieMiddleware');
 
 
 //Getting howls posted by a specific user
-apiRouter.get('/howls/:userId', (req,res) => {
+apiRouter.get('/howls/:userId', SessionMiddleware,(req,res) => {
     const userId = req.params.userId;
     HowlDAO.getHowlByUser(userId).then(howls => {
         if(howls){
@@ -25,8 +31,8 @@ apiRouter.get('/howls/:userId', (req,res) => {
 })
 
 // Getting howls posted by all users followed by the "authenticated" user
-apiRouter.get('/followers/howls', (req,res) => {
-    if(req.session.user) {
+apiRouter.get('/followers/howls', SessionMiddleware, (req,res) => {
+   
         //const following = req.params.following;
         const following = req.session.user.id;
         HowlDAO.getHowlByFollowing(following).then(howls => {
@@ -40,52 +46,67 @@ apiRouter.get('/followers/howls', (req,res) => {
         .catch(err => {
             res.status(500).json({error: 'Internal server error'});
         })  
-      }
-      else {
-        res.status(401).json({error: 'Not authenticated'});
-      }
+      
    
 })
 
 
+  
+
 //USER ENDPOINTS
-apiRouter.get('/users/current', (req,  res) => {
-    if(req.session.user) {
-      res.json(req.session.user);
+
+apiRouter.post('/users/login', (req,  res) => {
+    if(req.body.username) {
+      UserDAO.getUserByUsername(req.body.username).then(user => {
+        let result = {
+          user: user
+        }
+  
+        initializeSession(req, res, user);
+  
+        res.json(result);
+      }).catch(err => {
+        console.log(err);
+        res.status(401).json({message: 'No User Found'});
+      });
     }
     else {
       res.status(401).json({error: 'Not authenticated'});
     }
   });
-  apiRouter.get('/users/current/profiles', (req,  res) => {
-    if(req.session.user) {
-      res.json(req.session.visitedUsers);
-    }
-    else {
-      res.status(401).json({error: 'Not authenticated'});
-    }
+  
+  apiRouter.post('/users/logout', (req,  res) => {
+    removeSession(req, res);
+  
+    res.json({success: true});
   });
 
-apiRouter.get('/users/:userId', (req, res) => {
-    if(req.session.user){
+apiRouter.get('/users/current', SessionMiddleware, (req, res) => {
+      res.json(req.session.user);
+  });
+  apiRouter.get('/users/current/profiles', SessionMiddleware, (req,  res) => {
+
+      res.json(req.session.visitedUsers);
+        
+  });
+
+apiRouter.get('/users/:userId', SessionMiddleware, (req, res) => {
+
         const userId = req.params.userId;
         UserDAO.getUserById(userId).then(user => {
-            if(user){
-                res.json(user);
-            }  else {
-                res.status(404).json({error: 'No User found'});
-            }
+            if(!req.session.visitedUsers.includes(userId)){
+                req.session.visitedUsers.push(userId);
+            } 
+            res.json(user);
         })
         .catch(err => {
-            res.status(500).json({error: 'Internal server error'});
+            res.status(404).json({error: 'User not found'});
         })  
-    } else {
-        res.status(401).json({error: 'Not authenticated'});
-    }
-})
+    
+});
 
-apiRouter.get('/following/:userId', (req,res) => {
-    if(req.session.user) {
+apiRouter.get('/following/:userId', SessionMiddleware, (req,res) => {
+   
         const userId = req.params.userId;
        FollowerDAO.getUsersFollowing(userId).then(following => {
         console.log(following);
@@ -98,9 +119,27 @@ apiRouter.get('/following/:userId', (req,res) => {
         .catch(err => {
             res.status(500).json({error: 'Internal server error'});
         })  
-      }
-      else {
-        res.status(401).json({error: 'Not authenticated'});
-      }
-})
+      
+      
+});
+apiRouter.put('/following/:userA/follows/:userB', SessionMiddleware, (req,  res) => {
+    const userB = req.params.userB;
+    const userA = req.params.userA;
+    FollowerDAO.FollowUser(userA, userB).then(() => {
+        res.status(200).json({ message: 'Follow succsesful' });
+    })
+    .catch(err => {
+        res.status(500).json({error: 'Internal server error'});
+    }) 
+});
+apiRouter.delete('/following/:userA/follows/:userB', SessionMiddleware, (req,  res) => {
+    const userB = req.params.userB;
+    const userA = req.params.userA;
+    FollowerDAO.UnfollowUser(userA, userB).then(() => {
+        res.status(200).json({ message: 'Unfollow succsesful' });
+    })
+    .catch(err => {
+        res.status(500).json({error: 'Internal server error'});
+    }) 
+});
 module.exports = apiRouter;

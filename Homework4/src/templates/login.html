@@ -4,15 +4,20 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login</title>
+    <script src="./js/login.js" type="module"></script>
   </head>
   <body>
     <h1>Login</h1>
-    <form id="login" action="/login" method="post">
+    <div id="errorbox" class="hidden"></div>
+    <form id="login">
       <div>
         <label>Username:</label>
         <input type="text" id="username" name="username" required />
       </div>
-      <button type="submit">Login</button>
+      <p>
+        <input id="loginButton" type="button" value="Log In"/>
+      </p>
+     
     </form>
   </body>
 </html>

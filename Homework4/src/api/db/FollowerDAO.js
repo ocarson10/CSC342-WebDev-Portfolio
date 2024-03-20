@@ -34,9 +34,31 @@ module.exports = {
             //     }
             // })
              
+        
+        });
+    },
+
+    FollowUser: (currentUserId, followerUserId) => {
+        return new Promise((resolve, reject) => {
+            let following = users[currentUserId].following;
+            following.push(parseInt(followerUserId));
+            users[currentUserId].following = following;
+
+             resolve(users);
           
         });
     },
+
+    UnfollowUser: (currentUserId, followerUserId) => {
+        return new Promise((resolve, reject) => {
+            let following = users[currentUserId].following;
+            following = following.filter(follower => follower != followerUserId);
+            users[currentUserId].following = following;
+
+             resolve(users);
+          
+        });
+    }
 
  
 }

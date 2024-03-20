@@ -26,32 +26,107 @@ api.getCurrentUser().then(current => {
         })
     }
     console.log(isCurrentUser);
+    api.getUsersById(id).then(user => {
+        const avatar = document.createElement('img');
+        avatar.src = user.avatar;
+        avatar.alt = 'User Avatar';
+        avatarDiv.appendChild(avatar);
+        const name = document.createElement('h3');
+        name.innerHTML = `${user.first_name} ${user.last_name}`;
+        userInfoDiv.appendChild(name);
+        const username = document.createElement('h4');
+        username.innerHTML = user.username;
+        userInfoDiv.appendChild(username);
+        if(!isCurrentUser){
+            console.log(isFollowing);
+            //put up higher in js
+            const followButton = document.createElement('button');
 
-})
-api.getUsersById(id).then(user => {
-    const avatar = document.createElement('img');
-    avatar.src = user.avatar;
-    avatar.alt = 'User Avatar';
-    avatarDiv.appendChild(avatar);
-    const name = document.createElement('h3');
-    name.innerHTML = `${user.first_name} ${user.last_name}`;
-    userInfoDiv.appendChild(name);
-    const username = document.createElement('h4');
-    username.innerHTML = user.username;
-    userInfoDiv.appendChild(username);
-    if(!isCurrentUser){
-        console.log(isFollowing);
-        //put up higher in js
-        if(!isFollowing){
-            const follow = document.createElement('button');
-            follow.innerHTML = 'Follow';
-            userBanner.appendChild(follow);
-        } else {
-            const unfollow = document.createElement('button');
-            unfollow.innerHTML = 'Unfollow';
-            userBanner.appendChild(unfollow);
+            if(!isFollowing){
+                followButton.innerHTML = 'Follow';
+               
+               
+            } else {
+                followButton.innerHTML = 'Unfollow';
+              
+            }
+            userBanner.appendChild(followButton);
+            followButton.addEventListener("click", e => {
+                if (followButton.innerHTML == 'Unfollow'){
+                    //unfollow user
+                    followButton.innerHTML = 'Follow';
+                    isFollowing = false;
+                    api.unfollowUser(current.id, id).then(() => {
+                        location.reload();
+                    })
+                    //api route to handle removed follower
+                } else {
+                    followButton.innerHTML = 'Unfollow';
+                    isFollowing = true;
+                    //api route to handle added follower
+                    api.followUser(current.id, id).then(() => {
+                        location.reload();
+                    })
+                }
+                
+            })
         }
+
+        api.getUsersFollowing(user.id).then(userFollowing => {
+            console.log("This is the users FOLLOWING", userFollowing);
+        userFollowing.forEach(follower => {
+            api.getUsersById(follower).then(userFollower => {
+                const div = document.createElement('div');
+                const avatar = document.createElement('img');
+                avatar.src = userFollower.avatar;
+                avatar.alt = "User Avatar";
+                div.appendChild(avatar);
+                const usersName = document.createElement('h3');
+                 usersName.innerHTML = `${userFollower.first_name} ${userFollower.last_name}`;
+                div.appendChild(usersName);
+                const usertag = document.createElement('h4');
+                usertag.innerHTML =    `@${userFollower.username}`;
+                div.appendChild(usertag);
+                document.getElementById('follower-body').appendChild(div);
+            })
+        })
+
+        })
         
-    }
+    
+    })
+
+    api.getHowlsById(id).then(howls => {
+        howls.forEach(howl => {
+            const link = document.createElement('a');
+            link.href = '/profile?id=' + howl.userId;
+            const postAvatar = document.createElement('img');
+            postAvatar.alt = "User Avatar";
+            const postUser = document.createElement('h4');
+            const postName = document.createElement('h3');
+            api.getUsersById(howl.userId).then(user =>{
+                postUser.innerHTML = `@${user.username}`;
+                postAvatar.src = user.avatar;
+                postName.innerHTML = `${user.first_name} ${user.last_name}`;
+    
+            })
+           
+            console.log("HOWLS:",howl);
+            const div = document.createElement('div');
+            const date = document.createElement('p');
+            link.append(postAvatar);
+            div.append(link);
+            div.append(postName);
+            div.append(postUser);
+            date.innerHTML = howl.datetime;
+            div.append(date);
+            const paragraph = document.createElement('p');
+            paragraph.innerHTML = howl.text;
+            div.append(paragraph);
+            document.getElementById('howls').append(div);
+        })
+        
+    })
+
 
 })
