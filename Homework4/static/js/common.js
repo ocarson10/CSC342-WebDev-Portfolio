@@ -1,20 +1,25 @@
 import api from './APIClient.js';
 
 //Could be added to common.js page for all main pages, start of section
-const header = document.getElementById('header');
+const header = document.getElementById('userInformation');
 api.getCurrentUser().then(user => {
     
     console.log('THIS IS USER', user.username);
-    document.getElementById('username').innerHTML = `${user.username}`;
+    document.getElementById('username').innerHTML = `@${user.username}`;
+    const avatarLink = document.createElement('a');
+    avatarLink.href = '/profile?id=' + user.id;
     const avatar = document.createElement('img');
     avatar.src = `${user.avatar}`;
     avatar.alt = 'User Avatar';
-    header.appendChild(avatar);
+    avatarLink.appendChild(avatar);
+    const userPhoto = document.getElementById('Userphoto');
+    userPhoto.appendChild(avatarLink);
 
     //logout button
     const link = document.createElement('a');
     link.href = '#';
     link.innerHTML = "Log Out";
+    link.className ="btn btn-outline-danger";
      link.addEventListener("click", e => {
     e.preventDefault();
     api.logOut().then(() => {

@@ -24,9 +24,10 @@ api.getFollowersHowls().then(howls =>{
         const div = document.createElement('div');
         const date = document.createElement('p');
         link.append(postAvatar);
+        
+        link.append(postName);
+        link.append(postUser);
         div.append(link);
-        div.append(postName);
-        div.append(postUser);
         date.innerHTML = howl.datetime;
         div.append(date);
         const paragraph = document.createElement('p');

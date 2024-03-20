@@ -27,3 +27,12 @@ services:
     restart: unless-stopped
     volumes:
       - ./Homework3:/usr/local/app
+
+  hw4:
+    image: httpd:latest
+    build: 
+      dockerfile: Dockerfile
+      context: "./Homework4"
+    restart: unless-stopped
+    volumes:
+      - ./Homework4:/usr/local/app    

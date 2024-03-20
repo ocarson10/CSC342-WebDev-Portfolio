@@ -76,17 +76,21 @@ api.getCurrentUser().then(current => {
             console.log("This is the users FOLLOWING", userFollowing);
         userFollowing.forEach(follower => {
             api.getUsersById(follower).then(userFollower => {
+                const link = document.createElement('a');
+                 link.href = '/profile?id=' + userFollower.id;
                 const div = document.createElement('div');
                 const avatar = document.createElement('img');
                 avatar.src = userFollower.avatar;
                 avatar.alt = "User Avatar";
-                div.appendChild(avatar);
+                link.appendChild(avatar);
+                
                 const usersName = document.createElement('h3');
                  usersName.innerHTML = `${userFollower.first_name} ${userFollower.last_name}`;
-                div.appendChild(usersName);
+                link.appendChild(usersName);
                 const usertag = document.createElement('h4');
                 usertag.innerHTML =    `@${userFollower.username}`;
-                div.appendChild(usertag);
+                link.appendChild(usertag);
+                div.appendChild(link);
                 document.getElementById('follower-body').appendChild(div);
             })
         })
@@ -115,9 +119,10 @@ api.getCurrentUser().then(current => {
             const div = document.createElement('div');
             const date = document.createElement('p');
             link.append(postAvatar);
+           
+            link.append(postName);
+            link.append(postUser);
             div.append(link);
-            div.append(postName);
-            div.append(postUser);
             date.innerHTML = howl.datetime;
             div.append(date);
             const paragraph = document.createElement('p');

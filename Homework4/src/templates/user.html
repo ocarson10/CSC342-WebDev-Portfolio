@@ -10,9 +10,27 @@
   </head>
   <body>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <header id="header">
+    <!-- <header id="header">
+      <div id="home">
+        <a href="./"><img src="/img/howlerLogo.png" /></a>
+      </div>
       <h1>Welcome, <span id="username"></span></h1>
-    </header>
+    </header> -->
+    <nav class="navbar bg-body-tertiary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="./">
+          <img src="/img/howlerLogo.png" alt="Logo" width="30" height="30" class="d-inline-block align-text-top">
+          Howler
+        </a>
+       
+        
+        <div id="userInformation">
+          <span id="Userphoto"></span>
+          <h5>Welcome <span id="username"></span></h5>
+        </div>
+      </div>
+    </nav>
+
     <div id="userBanner">
       <div id="avatar"></div>
       <div id="userInfo"></div>
