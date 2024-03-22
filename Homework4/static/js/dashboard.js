@@ -25,12 +25,13 @@ api.getFollowersHowls().then(howls =>{
         const div = document.createElement('div');
         const date = document.createElement('p');
         link.append(postAvatar);
-        
+
         link.append(postName);
+    
         link.append(postUser);
         div.append(link);
         const tempDate = new Date(howl.datetime);
-        let hours = (tempDate.getUTCHours() + 20) % 23; // Get the hour (0-23)
+        let hours = (tempDate.getUTCHours() +20) % 24; // Get the hour (0-23)
         let endTime = "";
         if(hours > 12){
             endTime ="pm";
@@ -43,15 +44,19 @@ api.getFollowersHowls().then(howls =>{
             }
             endTime="am"
         }
-        const minutes = tempDate.getUTCMinutes(); // Get the minutes (0-59)
         
-
+        const minutes = tempDate.getUTCMinutes().toString().padStart(2, '0'); // Get the minutes (0-59)
+        
         date.innerHTML = `${tempDate.toDateString()} ${hours}:${minutes}${endTime}`; //make human readable
+        date.classList.add('dateSection');
         div.append(date);
         const paragraph = document.createElement('p');
         paragraph.innerHTML = howl.text;
+        paragraph.classList.add('paragraph');
         div.append(paragraph);
         howlsMain.append(div);
+        div.classList.add('card');
+        div.classList.add('howl-card');
     })
 
     //handle howl modal

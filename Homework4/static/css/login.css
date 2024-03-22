@@ -1,0 +1,44 @@
+.main{
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
+    height: 100vh;
+    background-color: #cccccc;
+
+}
+form{
+    background-color: #fefefe;
+    width: 50%;
+    height: 30vh;
+    border-radius: 10px;
+    padding-top: 40px;
+}
+form>h1{
+    text-align: center;
+    margin-bottom: 5vh;
+}
+form label,input{
+    margin-left: 20%;
+}
+label{
+    font-weight:500;
+}
+input{
+    width: 60%;
+}
+.logo{
+    display: flex;
+    background-color: #cccccc;
+    font-size:72px;
+    width: 50%;
+    text-align: center;
+
+}   
+img{
+    width: 50%;
+}
+a{
+    text-decoration: none;
+    color: black;
+}

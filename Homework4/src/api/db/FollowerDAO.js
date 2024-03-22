@@ -13,7 +13,7 @@ module.exports = {
             const followers = [];
             users.forEach(user => {
                user.following.forEach(follower => {
-                if(follower = userId){
+                if(follower == userId){
                     followers.push(follower);
                 }
                })

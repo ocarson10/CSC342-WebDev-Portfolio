@@ -5,13 +5,14 @@ const header = document.getElementById('userInformation');
 api.getCurrentUser().then(user => {
     
     console.log('THIS IS USER', user.username);
-    document.getElementById('username').innerHTML = `@${user.username}`;
+    document.getElementById('username').innerHTML = `${user.first_name} ${user.last_name}!`;
     const avatarLink = document.createElement('a');
     avatarLink.href = '/profile?id=' + user.id;
     const avatar = document.createElement('img');
     avatar.src = `${user.avatar}`;
     avatar.alt = 'User Avatar';
     avatarLink.appendChild(avatar);
+    avatarLink.classList.add('Profile-img');
     const userPhoto = document.getElementById('Userphoto');
     userPhoto.appendChild(avatarLink);
 

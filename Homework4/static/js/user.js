@@ -56,6 +56,7 @@ api.getCurrentUser().then(current => {
                     //unfollow user
                     followButton.innerHTML = 'Follow';
                     isFollowing = false;
+                    
                     api.unfollowUser(current.id, id).then(() => {
                         location.reload();
                     })
@@ -63,6 +64,7 @@ api.getCurrentUser().then(current => {
                 } else {
                     followButton.innerHTML = 'Unfollow';
                     isFollowing = true;
+                    
                     //api route to handle added follower
                     api.followUser(current.id, id).then(() => {
                         location.reload();
@@ -91,6 +93,8 @@ api.getCurrentUser().then(current => {
                 usertag.innerHTML =    `@${userFollower.username}`;
                 link.appendChild(usertag);
                 div.appendChild(link);
+                div.classList.add('card');
+                div.classList.add('howl-card');
                 document.getElementById('follower-body').appendChild(div);
             })
         })
@@ -123,11 +127,32 @@ api.getCurrentUser().then(current => {
             link.append(postName);
             link.append(postUser);
             div.append(link);
-            date.innerHTML = howl.datetime;
+            const tempDate = new Date(howl.datetime);
+        let hours = (tempDate.getUTCHours() +20) % 24; // Get the hour (0-23)
+        let endTime = "";
+        if(hours > 12){
+            endTime ="pm";
+            hours = hours - 12;
+        } else if(hours == 12){
+            endTime ="pm";
+        } else{
+            if(hours == 0){
+                hours+=12;
+            }
+            endTime="am"
+        }
+        
+        const minutes = tempDate.getUTCMinutes().toString().padStart(2, '0'); // Get the minutes (0-59)
+        
+        date.innerHTML = `${tempDate.toDateString()} ${hours}:${minutes}${endTime}`; //make human readable
+        date.classList.add('dateSection');
             div.append(date);
             const paragraph = document.createElement('p');
             paragraph.innerHTML = howl.text;
+            paragraph.classList.add('paragraph');
             div.append(paragraph);
+            div.classList.add('card');
+            div.classList.add('howl-card');
             document.getElementById('howls').append(div);
         })
         

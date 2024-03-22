@@ -1,0 +1,46 @@
+#userInformation{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.Profile-img{
+    margin-left: 2px;
+    margin-right: 2px;
+}
+.card{
+    width:50%;
+    margin: auto;
+    margin-top: 2%;
+}
+.howl-card{
+    padding: 5px;
+}
+.howl-card>a{
+    display:flex;
+    text-decoration: none;
+    color: black;
+    padding-top: 1%;
+}
+.howl-card h4{
+    margin-top: 10px;
+    font-size: medium;
+    color: rgb(97, 96, 96);
+}
+.howl-card a:hover{
+    color: rgb(27, 75, 179);
+}
+.howl-card h3 {
+    margin-top: 10px;
+    font-size: large;
+    margin-right: 1%;
+}
+.dateSection{
+    text-align: right;
+    margin-right: 1%;
+    margin-top: -60px;
+    font-size: small;
+}
+.paragraph{
+    margin-top: 40px;
+    margin-left: 1%;
+}
