@@ -28,8 +28,23 @@ apiRouter.get('/howls/:userId', SessionMiddleware,(req,res) => {
     .catch(err => {
         res.status(500).json({error: 'Internal server error'});
     })  
-})
+});
 
+apiRouter.post('/howls/:userId', SessionMiddleware, (req,res) => {
+    const userId = req.params.userId;
+    const message = req.body.message;
+    const date = req.body.date;
+    HowlDAO.createHowl(message, date,userId).then( () =>{
+
+        res.status(200).json({ message: 'Howl succsesfully created' });
+
+       
+    }) 
+    .catch(err => {
+        res.status(500).json({error: 'Internal server error'});
+    }) 
+
+});
 // Getting howls posted by all users followed by the "authenticated" user
 apiRouter.get('/followers/howls', SessionMiddleware, (req,res) => {
    
@@ -48,7 +63,7 @@ apiRouter.get('/followers/howls', SessionMiddleware, (req,res) => {
         })  
       
    
-})
+});
 
 
   

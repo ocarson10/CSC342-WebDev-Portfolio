@@ -46,6 +46,13 @@ const unfollowUser = (currentUserId ,userId) => {
 
 };
 
+const createHowl = (message, date, user) => {
+  const data = {
+    message: message,
+    date: date,
+  }
+  return HTTPClient.post(`${API_BASE}/howls/${user}`, data);
+}
 // const getParksByCountyId = (countyId) => {
 //   if(countyId == "all") {
 //     return getParks();
@@ -66,4 +73,5 @@ export default {
  logOut,
  followUser,
  unfollowUser,
+ createHowl
 };

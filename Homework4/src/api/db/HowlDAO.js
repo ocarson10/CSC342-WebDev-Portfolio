@@ -1,6 +1,14 @@
 let howls = require('../../data/howls.json');
 let users = require('../../data/follows.json');
  
+function sortHowls(a, b) {
+    const dateA = new Date(a.datetime);
+    const dateB = new Date(b.datetime);
+    return dateB - dateA; 
+}
+
+howls = howls.sort(sortHowls);
+console.log("SORTED:", howls);
 
 module.exports = {
     getHowls: () => {
@@ -42,7 +50,10 @@ module.exports = {
             const howlsByFollowing = [];
             howls.forEach(howl => {
                 following.forEach(follower => {
-                    if(howl.userId == follower){
+                    if(howl.userId == follower && !howlsByFollowing.includes(howl)){
+                        howlsByFollowing.push(howl);
+                    } else if (howl.userId == userId && !howlsByFollowing.includes(howl)){
+                        console.log(howl.userId, userId);
                         howlsByFollowing.push(howl);
                     }
                 })
@@ -61,7 +72,8 @@ module.exports = {
                 datetime: date,
                 text: message
             }
-            howls[id] = howl;
+            //howls[id] = howl;
+            howls.unshift(howl);
             resolve(howl);
         });
     },
