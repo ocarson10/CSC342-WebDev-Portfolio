@@ -11,7 +11,10 @@ api.getCurrentUser().then(user => {
     const avatar = document.createElement('img');
     avatar.src = `${user.avatar}`;
     avatar.alt = 'User Avatar';
-    avatarLink.appendChild(avatar);
+    const AvatarBg = document.createElement('div');
+    AvatarBg.appendChild(avatar);
+    AvatarBg.classList.add('avatar-bg');
+    avatarLink.appendChild(AvatarBg);
     avatarLink.classList.add('Profile-img');
     const userPhoto = document.getElementById('Userphoto');
     userPhoto.appendChild(avatarLink);

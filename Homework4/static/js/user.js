@@ -30,12 +30,15 @@ api.getCurrentUser().then(current => {
         const avatar = document.createElement('img');
         avatar.src = user.avatar;
         avatar.alt = 'User Avatar';
-        avatarDiv.appendChild(avatar);
+        const AvatarBg = document.createElement('div');
+        AvatarBg.appendChild(avatar);
+        AvatarBg.classList.add('avatar-bg-main');
+        avatarDiv.appendChild(AvatarBg);
         const name = document.createElement('h3');
         name.innerHTML = `${user.first_name} ${user.last_name}`;
         userInfoDiv.appendChild(name);
         const username = document.createElement('h4');
-        username.innerHTML = user.username;
+        username.innerHTML = `@${user.username}`;
         userInfoDiv.appendChild(username);
         if(!isCurrentUser){
             console.log(isFollowing);
@@ -44,10 +47,14 @@ api.getCurrentUser().then(current => {
 
             if(!isFollowing){
                 followButton.innerHTML = 'Follow';
+                followButton.classList.remove('unfollow');
+                followButton.classList.add('follow');
                
                
             } else {
                 followButton.innerHTML = 'Unfollow';
+                followButton.classList.remove('follow');
+                followButton.classList.add('unfollow');
               
             }
             userBanner.appendChild(followButton);
@@ -84,7 +91,10 @@ api.getCurrentUser().then(current => {
                 const avatar = document.createElement('img');
                 avatar.src = userFollower.avatar;
                 avatar.alt = "User Avatar";
-                link.appendChild(avatar);
+                const AvatarBg = document.createElement('div');
+                AvatarBg.appendChild(avatar);
+                AvatarBg.classList.add('avatar-bg');
+                link.appendChild(AvatarBg);
                 
                 const usersName = document.createElement('h3');
                  usersName.innerHTML = `${userFollower.first_name} ${userFollower.last_name}`;
@@ -118,11 +128,13 @@ api.getCurrentUser().then(current => {
                 postName.innerHTML = `${user.first_name} ${user.last_name}`;
     
             })
-           
+           const AvatarBg = document.createElement('div');
+            AvatarBg.appendChild(postAvatar);
+            AvatarBg.classList.add('avatar-bg');
             console.log("HOWLS:",howl);
             const div = document.createElement('div');
             const date = document.createElement('p');
-            link.append(postAvatar);
+            link.append(AvatarBg);
            
             link.append(postName);
             link.append(postUser);

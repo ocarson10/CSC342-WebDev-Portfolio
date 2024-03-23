@@ -10,7 +10,7 @@
 form{
     background-color: #fefefe;
     width: 50%;
-    height: 30vh;
+    min-height: 30vh;
     border-radius: 10px;
     padding-top: 40px;
 }
@@ -41,4 +41,41 @@ img{
 a{
     text-decoration: none;
     color: black;
+}
+@media all and (max-width: 575px){
+    .logo{
+        
+        font-size:64px;
+      
+    
+    }  
+    img{
+        width: 80%;
+    }
+
+    
+}
+@media all and (max-width: 440px){
+    .logo{
+        
+        font-size:52px;
+      
+    
+    }  
+    img{
+        width: 80%;
+    }
+    
+}
+@media all and (max-width: 375px){
+    .logo{
+        
+        font-size:45px;
+      
+    
+    }  
+
+    img{
+        width: 80%;
+    }
 }

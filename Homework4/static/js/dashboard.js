@@ -24,7 +24,10 @@ api.getFollowersHowls().then(howls =>{
         console.log("HOWLS:",howl);
         const div = document.createElement('div');
         const date = document.createElement('p');
-        link.append(postAvatar);
+        const AvatarBg = document.createElement('div');
+        AvatarBg.appendChild(postAvatar);
+        AvatarBg.classList.add('avatar-bg');
+        link.append(AvatarBg);
 
         link.append(postName);
     
