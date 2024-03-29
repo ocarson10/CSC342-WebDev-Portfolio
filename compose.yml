@@ -26,8 +26,9 @@ services:
       context: "./Homework3"
     restart: unless-stopped
     volumes:
-      - ./Homework3:/usr/local/app
-
+      - ./Homework3/static:/app/static
+      - ./Homework3/templates:/app/templates
+      - ./Homework3/server.js:/app/server.js
   hw4:
     image: httpd:latest
     build: 
@@ -35,7 +36,9 @@ services:
       context: "./Homework4"
     restart: unless-stopped
     volumes:
-      - ./Homework4:/usr/local/app   
+      - ./Homework4/static:/app/static
+      - ./Homework4/src:/app/src
+      - ./Homework4/server.js:/app/server.js
 
   hw5:
     image: httpd:latest
@@ -44,6 +47,8 @@ services:
       context: "./Homework5"
     restart: unless-stopped
     volumes:
-      - ./Homework5:/usr/local/app
+      - ./Homework5/static:/app/static
+      - ./Homework5/src:/app/src
+      - ./Homework5/server.js:/app/server.js
     env_file:
       - ./Homework5/.env    
