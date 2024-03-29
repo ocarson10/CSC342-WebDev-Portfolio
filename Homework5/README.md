@@ -1,0 +1,7 @@
+### An interesting challenge you encountered when implementing JTW algorithms. What was the issue, and how did you solve it?
+
+One challenge I faced when implementing the JTW algorithm was figuring out how to properly hash the header and payload. I was running into issues regaurding how my token was created,signed and verified compared to how it was actually varified using jwt.io. I realized that my digest on my HMAC function was in base64 which messed up the encoding of my signature, causing my signature to not be verified properly. Taking away the base64 and using the proper base64url encoding and decoding helped solve this problem.
+
+### What security risks/vulnerabilities/weaknesses, if any, are present in your implementation? How can they be exploited, and what are some ways to fix them? Are there any tradeoffs if you implement any of the fixes?
+
+When it comes to the current implementation, symmetric key encryption is used so the same key is use to sign and verify the token. As long as the key is secure, then attacker wont be able to forge signatures, however if the key gets exploited, the application is vulnerable to attack. Using Asymmetric key encryption adds a layer of protection to the application because the key to sign is different from the key to verify. While asymmetric key encryption can be more secure, it is slower than symmetric key encryption, especially for large data sets.
