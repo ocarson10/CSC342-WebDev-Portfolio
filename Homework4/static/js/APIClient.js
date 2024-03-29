@@ -1,6 +1,6 @@
 import HTTPClient from "./HTTPClient.js";
 
-const API_BASE = '/api';
+const API_BASE = './api';
 
 
 const getHowlsById = (id) => {

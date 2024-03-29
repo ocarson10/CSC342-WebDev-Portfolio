@@ -2,13 +2,15 @@ const express = require('express');
 const multer = require('multer');
 const upload = multer({dest: 'uploads/'});
 const fs = require('fs');
+const path = require('path');
 
 
 const app = express();
 
 const PORT = 80;
-const html_dir = __dirname + "/templates/";
+// const html_dir = __dirname + "/templates/";
 
+const html_dir = path.join(__dirname, './templates/');
 
 app.listen(PORT, () => console.log(`Sever listening on port: ${PORT}`));
 

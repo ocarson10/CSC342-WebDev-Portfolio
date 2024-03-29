@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pay Your Friends</title>
-    <script src="/js/form.js" type="module"></script>
-    <link href='./css/style.css' rel='stylesheet' />
+    <script src="./js/form.js" type="module"></script>
+    <link href="./css/style.css" rel="stylesheet" />
   </head>
   <body>
     <header>
@@ -20,94 +20,96 @@
         action="send"
         enctype="multipart/form-data"
       >
-        
         <div class="sender">
           <h1>Sender Details</h1>
           <h4>Preview Image Before Upload</h4>
           <div class="image">
             <img
-            id="previewImage"
-            alt="Preview"
-            style="max-width: 225px; max-height: 225px"
-          />
+              id="previewImage"
+              alt="Preview"
+              style="max-width: 225px; max-height: 225px"
+            />
           </div>
           <br />
-          <input type="file" id="imageInput" name="image" accept="image/*" required/>
+          <input
+            type="file"
+            id="imageInput"
+            name="image"
+            accept="image/*"
+            required
+          />
           <br />
           <label>
             First Name <br />
-            <input
-            type="text"
-            id="firstName"
-            name="firstName"
-            required
-            />
-          </label> 
+            <input type="text" id="firstName" name="firstName" required />
+          </label>
           <label>
             Last Name <br />
-            <input
-            type="text"
-            id="lastName"
-            name="lastName"
-            required
-            />
-          </label> 
-         
+            <input type="text" id="lastName" name="lastName" required />
+          </label>
         </div>
 
         <div class="recipient">
           <h1>Recipient Details</h1>
           <label>
             First Name <br />
-            <input
-            type="text"
-            id="firstNameRec"
-            name="firstNameRec"
-            required
-            />
+            <input type="text" id="firstNameRec" name="firstNameRec" required />
           </label>
           <label>
             Last Name <br />
-            <input
-            type="text"
-            id="lastNameRec"
-            name="lastNameRec"
-            required
-            />
-          </label> 
+            <input type="text" id="lastNameRec" name="lastNameRec" required />
+          </label>
           <label id="messages">
             Message
-            <textarea class="message-txt" id="message" name="message" minlength="10" required></textarea>
+            <textarea
+              class="message-txt"
+              id="message"
+              name="message"
+              minlength="10"
+              required
+            ></textarea>
           </label>
           <label id="notify">
-            Notify Recipient: <br/>
+            Notify Recipient: <br />
             <label for="email-btn">
-              <input type="radio" id="email-btn" name="notify" value="Email"/>Email
+              <input
+                type="radio"
+                id="email-btn"
+                name="notify"
+                value="Email"
+              />Email
             </label>
-            
+
             <label for="sms">
-              <input type="radio" id="sms" name="notify" value="SMS"/>
+              <input type="radio" id="sms" name="notify" value="SMS" />
               SMS
             </label>
-            
+
             <label for="no-notify">
-              <input type="radio" id="no-notify" name="notify" value="No-notify"/>
+              <input
+                type="radio"
+                id="no-notify"
+                name="notify"
+                value="No-notify"
+              />
               Do not notify
             </label>
           </label>
           <label>
             Email <br />
-            <input type="email" id="email" name="email"/>
+            <input type="email" id="email" name="email" />
           </label>
           <label>
-          Phone Number <br />
+            Phone Number <br />
             <small>Format: 111-222-3333</small> <br />
             <input type="text" id="phone" name="phone" maxlength="12" />
           </label>
         </div>
         <div class="payment">
           <h1>Payment Details</h1>
-            <label for="card-type">Card Type <br />  <select name="card-type" id="card-type" required>
+          <label for="card-type"
+            >Card Type <br />
+            <select name="card-type" id="card-type" required>
               <option value="american-express">American Express</option>
               <option value="discover">Discover</option>
               <option value="masterCard">MasterCard</option>
@@ -116,25 +118,52 @@
           </label>
           <label>
             Card Number <br />
-            <input type="text" id="card" name="card" placeholder="XXXX-XXXX-XXXX-XXXX" maxlength="19" required/>
+            <input
+              type="text"
+              id="card"
+              name="card"
+              placeholder="XXXX-XXXX-XXXX-XXXX"
+              maxlength="19"
+              required
+            />
           </label>
           <label>
             Expiration Date <br />
-            <input type="text" placeholder="MM / YY" id="expiration" name="expiration" maxlength="5" required/>
+            <input
+              type="text"
+              placeholder="MM / YY"
+              id="expiration"
+              name="expiration"
+              maxlength="5"
+              required
+            />
           </label>
           <label>
             CVV <br />
-            <input type="password" id="ccv" name="ccv" maxlength="4" minlength="3" required/>
+            <input
+              type="password"
+              id="ccv"
+              name="ccv"
+              maxlength="4"
+              minlength="3"
+              required
+            />
           </label>
           <label>
             Amount ($) <br />
-            <input type="text" id="amount" name="amount" required/>
+            <input type="text" id="amount" name="amount" required />
           </label>
-          <label  class="terms" for="terms">
-            <input type="checkbox" id="terms" name="terms" value="Agree" required>I agree to the Terms and Conditions <br />
+          <label class="terms" for="terms">
+            <input
+              type="checkbox"
+              id="terms"
+              name="terms"
+              value="Agree"
+              required
+            />I agree to the Terms and Conditions <br />
           </label>
           <br />
-          <input type="submit" id="send" value="Send"/>
+          <input type="submit" id="send" value="Send" />
         </div>
       </form>
     </div>
