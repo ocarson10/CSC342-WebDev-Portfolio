@@ -20,7 +20,6 @@ services:
       - ./Homework2:/usr/local/apache2/htdocs
 
   hw3:
-    image: httpd:latest
     build: 
       dockerfile: Dockerfile
       context: "./Homework3"
@@ -30,7 +29,6 @@ services:
       - ./Homework3/templates:/app/templates
       - ./Homework3/server.js:/app/server.js
   hw4:
-    image: httpd:latest
     build: 
       dockerfile: Dockerfile
       context: "./Homework4"
@@ -41,7 +39,6 @@ services:
       - ./Homework4/server.js:/app/server.js
 
   hw5:
-    image: httpd:latest
     build: 
       dockerfile: Dockerfile
       context: "./Homework5"
