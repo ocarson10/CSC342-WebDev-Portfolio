@@ -1,0 +1,145 @@
+#userInformation{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.Profile-img{
+    margin-left: 2px;
+    margin-right: 2px;
+}
+.card{
+    width:50%;
+    min-width: 275px;
+    margin: auto;
+    margin-top: 2%;
+}
+.howl-card{
+    padding: 5px;
+    display: grid;
+    gap:10px;
+    grid-template-areas:
+    "user date"
+    "message message";
+
+}
+.howl-card>a{
+    display:flex;
+    text-decoration: none;
+    color: black;
+    padding-top: 1%;
+    grid-area: user;
+    align-items: center;
+}
+.howl-card h4{
+    margin-top: 10px;
+    font-size: medium;
+    color: rgb(97, 96, 96);
+}
+.howl-card a:hover{
+    color: rgb(27, 75, 179);
+}
+.howl-card h3 {
+    margin-top: 10px;
+    font-size: large;
+    margin-right: 1%;
+}
+.dateSection{
+    font-size: small;
+    grid-area: date;
+    text-align: right;
+    margin-top: 10px;
+    margin-right: 1%;
+}
+.paragraph{
+    margin-top: 20px;
+    margin-left: 1%;
+    grid-area: message;
+}
+#logo-img{
+    width: 50px;
+    height: 50px;
+}
+.navbar-brand{
+    font-size: xx-large;
+}
+.avatar-bg{
+    background-color: rgb(160, 157, 157);
+    padding: 5px;
+    border-radius: 40px;
+    margin-right: 5px;
+    height:70px;
+    width: 70px;
+}
+.avatar-bg>img{
+    border-radius: 40px;
+}
+#username{
+    margin-right:5px;
+}
+@media all and (max-width: 585px){
+ 
+    #userInformation h5{
+       font-size: 12px;
+    }
+    .avatar-bg{
+        height:50px;
+        width: 50px;
+    }
+    .avatar-bg>img{
+        height: 45px;
+        width: 45px;
+        border-radius: 25px;
+    }
+    .btn-outline-danger{
+        font-size: 10px;
+        width: 25%
+    }
+    #logo-img{
+        width: 40px;
+        height: 40px;
+    }
+    .navbar-brand{
+        font-size: x-large;
+    }
+    .howl-card h4{
+       font-size: x-small;
+    }
+    .howl-card h3{
+        font-size: small;
+     }
+     .dateSection{
+        font-size: x-small;
+    }
+    .paragraph{
+        font-size: small;
+    }
+    textarea{
+        font-size: small;
+    }
+}
+@media all and (max-width: 440px){
+    #userInformation h5{
+        font-size: 8px;
+     }
+     .avatar-bg{
+         height:30px;
+         width: 30px;
+     }
+     .avatar-bg>img{
+         height: 23px;
+         width: 23px;
+         border-radius: 15px;
+         margin-bottom: 2px;
+     }
+     .btn-outline-danger{
+         font-size: 7px;
+         width: 25%
+     }
+     #logo-img{
+        width: 30px;
+        height: 30px;
+    }
+    .navbar-brand{
+        font-size: large;
+    }
+}

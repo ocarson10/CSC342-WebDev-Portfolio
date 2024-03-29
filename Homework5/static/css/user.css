@@ -1,0 +1,99 @@
+h2{
+    font-size: xx-large;
+    font-weight: 600;
+    margin-left: 25%;
+    margin-top: 50px;
+}
+.accordion-button{
+    font-size: xx-large;
+    font-weight: 600; 
+    background-color: #e5e5e5;
+    width: 67%;
+    /* margin-left:-17%; */
+    min-width: 275px;
+    
+}
+
+#userInfo{
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+#userInfo h3,h4{
+    margin-right: 10px;
+}
+#userInfo h4{
+    color: rgb(97, 96, 96);
+}
+#userBanner{
+    margin-left: 24%;
+    margin-top: 40px;
+}
+.avatar-bg-main{
+    background-color: rgb(160, 157, 157);
+    padding: 5px;
+    border-radius: 50px;
+    margin-right: 5px;
+    height:100px;
+    width: 100px;
+}
+.avatar-bg-main>img{
+    height: 95px;
+    width: 95px;
+    border-radius: 50px;
+
+}
+.follow{
+    background-color: green;
+    border-color: green;
+    border-radius: 10px;
+    color:white
+}
+.unfollow{
+    background-color: red;
+    border-color: red;
+    border-radius: 10px;
+    color:white
+
+}
+
+
+@media all and (max-width: 490px){
+   .accordion-button{
+    margin-left: 0%;
+   }
+   h2{
+    margin-left: 20%;
+    
+    }   
+}
+@media all and (max-width: 420px){
+    .accordion-button{
+     margin-left: 0%;
+    }
+    h2{
+     margin-left: 18%;
+     
+     }   
+    #userInfo{
+        display: block;
+    }
+ }
+ @media all and (max-width: 380px){
+    .accordion-button{
+     margin-left: 0%;
+    }
+    h2{
+     margin-left: 12%;
+     
+     }   
+ }
+ @media all and (max-width: 320px){
+    .accordion-button{
+     margin-left: 0;
+    }
+    h2{
+     margin-left: 5%;
+     
+     }   
+ }

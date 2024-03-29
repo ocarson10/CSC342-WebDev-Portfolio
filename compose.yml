@@ -35,4 +35,15 @@ services:
       context: "./Homework4"
     restart: unless-stopped
     volumes:
-      - ./Homework4:/usr/local/app    
+      - ./Homework4:/usr/local/app   
+
+  hw5:
+    image: httpd:latest
+    build: 
+      dockerfile: Dockerfile
+      context: "./Homework5"
+    restart: unless-stopped
+    volumes:
+      - ./Homework5:/usr/local/app
+    env_file:
+      - ./Homework5/.env    
