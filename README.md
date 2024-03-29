@@ -6,4 +6,4 @@
 - [Homework 2](https://github.ncsu.edu/engr-csc342/csc342-2024Spring-orcarson/blob/c57f29d120e4b0f3bedc0360ffb699c3af38a69a/Homework2/README.md)
 - [Homework 3](https://github.ncsu.edu/engr-csc342/csc342-2024Spring-orcarson/blob/2063f49021766e65fcc6040d95e57d9fb77fe620/Homework3/README.md)
 - [Homework 4](https://github.ncsu.edu/engr-csc342/csc342-2024Spring-orcarson/blob/6b092dbe4090e25f0d26cd76a02f6a1612baf204/Homework4/README.md)
-- Homework 5
+- [Homework 5](https://github.ncsu.edu/engr-csc342/csc342-2024Spring-orcarson/blob/ed31856926b79d5cd923957ae4a84456a6a43384/Homework5/README.md)
